@@ -46,6 +46,8 @@
   --max:120rem;
   --sec:clamp(4.236rem, 9vw, 11.089rem);
   --ease:cubic-bezier(.2,.7,.1,1);
+  --logo-big:clamp(5.236rem, 1.8rem + 8.4vw, 11.089rem);
+  --logo-small:clamp(3.618rem, 2.6rem + 1.8vw, 4.854rem);
 }
 @media (max-width:600px){:root{--fs-h1:17vw}}
 *,*::before,*::after{box-sizing:border-box}
@@ -98,13 +100,14 @@ strong{font-weight:600}
 .link:hover{color:var(--ink)}
 
 /* ---------------- Header ---------------- */
-.site-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
 .site-header.scrolled{border-bottom-color:var(--line)}
 .bar{display:flex;align-items:center;gap:var(--s-4);padding-block:var(--s-1);transition:padding .3s var(--ease)}
 .site-header.scrolled .bar{padding-block:var(--s-0)}
 .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--red);flex:none}
-.logo img{display:block;height:clamp(5.236rem, 3rem + 4.4vw, 7.854rem);width:auto;transition:height .3s var(--ease)}
-.site-header.scrolled .logo img{height:clamp(3.618rem, 2.6rem + 1.8vw, 4.854rem)}
+.logo img{display:block;height:var(--logo-big);width:auto;transition:height .35s var(--ease)}
+.site-header.scrolled .logo img{height:var(--logo-small)}
+#inhalt{padding-top:calc(var(--logo-big) + 2 * var(--s-1) + 1px)}
 .nav{margin-left:auto;display:flex;align-items:center;gap:clamp(1rem,2vw,2.618rem)}
 .nav a{text-decoration:none;color:var(--slate);font-size:.96rem;transition:color .2s}
 .nav a:hover,.nav a[aria-current="true"]{color:var(--ink)}
@@ -300,7 +303,7 @@ dialog::backdrop{background:rgba(26,42,51,.55)}
 /* ---------------- Footer ---------------- */
 .site-footer{background:var(--ink);color:#c9d6dc;padding-block:var(--s-6) var(--s-4)}
 .site-footer .logo{color:var(--white)}
-.site-footer .logo img{height:clamp(3.618rem, 2.6rem + 1.8vw, 4.854rem);width:auto}
+.site-footer .logo img{height:var(--logo-small);width:auto}
 .foot-claim{font-size:var(--fs-h3);font-weight:300;letter-spacing:-0.03em;line-height:1.05;color:var(--white);margin:var(--s-4) 0 var(--s-5)}
 .foot-claim .brand-dot{animation:none;transform:none}
 .foot-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s-4);padding-top:var(--s-4);border-top:1px solid #33464f}
@@ -1371,7 +1374,7 @@ function route(){
   showView(view);
   $$('#nav a').forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + (view === 'site' ? h : view))));
   if (target) requestAnimationFrame(() => target.scrollIntoView());
-  else if (view !== 'site' || changed) window.scrollTo(0, 0);
+  else if (view !== 'site' || changed) { const top = () => window.scrollTo({top:0, left:0, behavior:'instant'}); top(); requestAnimationFrame(top); }
 }
 window.addEventListener('hashchange', route);
 $$('[data-home]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); if(location.hash){ location.hash = ''; } window.scrollTo(0,0); route(); }));
