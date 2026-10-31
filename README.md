@@ -57,7 +57,7 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Typo-Skala im Goldenen Schnitt (h1 17.942rem … small 0.618rem), fluid per `clamp()`
 - Zeichensystem: Kreis = Mensch, roter Punkt = Agent
 - Mobiles Menü bis 1200 px Breite (wegen Sprachumschalter im Header)
-- Logo-Intro: Beim Öffnen der Startseite steht das Logo groß im Hero – ab 1201 px links neben der Headline, darunter groß über der Headline – und gleitet nach rund 2,6 s an seinen Platz im Header; Kicker, Headline und Seite gleiten mit. Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort. Kein Intro bei Sprungmarken (`#kontakt` usw.), beim Sprachwechsel und bei „Bewegung reduzieren“. Bausteine: kleines Script im `<head>` und `<img class="hero-logo">` im Hero (beide Sprachen), CSS-Block „Logo-Intro“ in `css/site.css`, Funktion `logoIntro()` in `js/site.js` (Standzeit `HOLD`, Dauer `DUR`)
+- Logo-Intro (nur Tablet und mobil, bis 1200 px): Beim Öffnen der Startseite steht das Logo rund doppelt so groß über der Headline und gleitet nach rund 2,6 s an seinen Platz im Header; die Seite gleitet mit. Auf dem Desktop (ab 1201 px) gibt es bewusst kein Intro, das Logo steht wie immer im Header. Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort. Kein Intro bei Sprungmarken (`#kontakt` usw.), beim Sprachwechsel und bei „Bewegung reduzieren“. Bausteine: kleines Script im `<head>` und `<img class="hero-logo">` im Hero (beide Sprachen), CSS-Block „Logo-Intro“ in `css/site.css`, Funktion `logoIntro()` in `js/site.js` (Standzeit `HOLD`, Dauer `DUR`)
 
 ## Grafitecture-Feld (Impressum und Datenschutz)
 
