@@ -90,6 +90,78 @@ $$('[data-home]').forEach(a => a.addEventListener('click', e => { e.preventDefau
 $$('.view a[href="#"], #brand a[href="#"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); location.hash=''; route(); window.scrollTo(0,0); }));
 route();
 
+/* =========================================================
+   Logo-Intro: Das Logo steht beim Öffnen groß im Hero (Klasse .intro,
+   gesetzt im <head>) und gleitet dann an seinen Platz im Header.
+   Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort.
+   ========================================================= */
+(function logoIntro(){
+  const root = document.documentElement;
+  if (!root.classList.contains('intro')) return;
+  root.classList.add('intro-js');
+  const big = $('.hero-logo'), small = $('.site-header .logo img');
+  if (!big || !small || location.hash.length > 1 || window.scrollY > 40) { root.classList.remove('intro'); return; }
+
+  const HOLD = 2600, DUR = 1100;            // Standzeit ab Seitenstart, Dauer des Gleitens (ms)
+  const EASE = 'cubic-bezier(.65,0,.35,1)'; // gleich wie inOut() unten
+  const inOut = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+  const TRIGGERS = ['wheel', 'touchstart', 'pointerdown', 'keydown', 'scroll', 'hashchange'];
+  let started = false;
+
+  function slide(){
+    if (started) return; started = true;
+    clearTimeout(timer);
+    TRIGGERS.forEach(ev => window.removeEventListener(ev, slide, true));
+
+    // Ausgangslage merken: großes Logo und die Inhalte, die mitgleiten
+    const from = big.getBoundingClientRect();
+    const opacity = getComputedStyle(big).opacity;
+    // #site gleitet als Ganzes (gemessen an .hero-foot), Kicker und Headline zusätzlich seitlich
+    const page = $('#site'), parts = [$('.hero-kicker'), $('.hero-title')];
+    const measured = [$('.hero-foot'), ...parts];
+    const before = measured.map(el => el.getBoundingClientRect());
+
+    // Flieger: Kopie des großen Logos, fix positioniert, wird auf das Header-Logo verkleinert
+    const fly = big.cloneNode();
+    fly.className = 'logo-flyer';
+    Object.assign(fly.style, { left: from.left + 'px', top: from.top + 'px', width: from.width + 'px', height: from.height + 'px', opacity });
+    document.body.appendChild(fly);
+
+    // Endlage herstellen, dann die Inhalte per FLIP von der alten Lage aus hineingleiten lassen
+    root.classList.add('intro-fly');
+    root.classList.remove('intro');
+    const after = measured.map(el => el.getBoundingClientRect());
+    const dyPage = before[0].top - after[0].top;
+    const flip = (el, dx, dy) => {
+      if (Math.abs(dx) < .5 && Math.abs(dy) < .5) return;
+      el.style.transition = 'none';
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      el.getBoundingClientRect();
+      el.style.transition = `transform ${DUR}ms ${EASE}`;
+      el.style.transform = '';
+      setTimeout(() => { el.style.transition = ''; }, DUR + 50);
+    };
+    flip(page, 0, dyPage);
+    parts.forEach((el, i) => flip(el, before[i+1].left - after[i+1].left, before[i+1].top - after[i+1].top - dyPage));
+
+    // Flieger folgt dem Header-Logo Bild für Bild (das Ziel kann sich beim Scrollen verkleinern)
+    const t0 = performance.now();
+    (function frame(now){
+      const t = Math.min(1, (now - t0) / DUR), e = inOut(t);
+      const to = small.getBoundingClientRect();
+      const x = (to.left - from.left) * e, y = (to.top - from.top) * e;
+      const s = (from.width + (to.width - from.width) * e) / from.width;
+      fly.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+      fly.style.opacity = +opacity + (1 - opacity) * e;
+      if (t < 1) requestAnimationFrame(frame);
+      else { root.classList.remove('intro-fly'); fly.remove(); }
+    })(t0);
+  }
+
+  const timer = setTimeout(slide, Math.max(700, HOLD - performance.now()));
+  TRIGGERS.forEach(ev => window.addEventListener(ev, slide, { capture: true, passive: true }));
+})();
+
 /* Rx / OTC */
 function setMarket(m){
   $$('.switch button').forEach(b => b.setAttribute('aria-pressed', b.dataset.market === m));
