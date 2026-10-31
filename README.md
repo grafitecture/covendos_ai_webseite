@@ -15,6 +15,7 @@ js/en.js                   Englische Daten und Texte, gleiche Struktur wie js/de
 fonts/source-sans-3.woff2  Web-Fallback-Schrift, lokal (keine Google-Verbindung)
 img/                       Bilder (WebP), Logo als SVG, Favicon
 img/team/                  Porträts (fiktives Team, Higgsfield AI)
+kit/grafitecture-credit/   Grafitecture-Feld (Kit v1.2, unverändert aus grafitecture/lannee_webseite)
 .htaccess                  HTTPS, Caching, Sicherheits-Header für Apache (Managed Server comvos)
 ```
 
@@ -56,6 +57,15 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Typo-Skala im Goldenen Schnitt (h1 17.942rem … small 0.618rem), fluid per `clamp()`
 - Zeichensystem: Kreis = Mensch, roter Punkt = Agent
 - Mobiles Menü bis 1200 px Breite (wegen Sprachumschalter im Header)
+
+## Grafitecture-Feld (Impressum und Datenschutz)
+
+- Lime-Feld mit Grafitecture-Logo, „Marken mit KI.“ / „Brands with AI.“ und Link auf `https://www.grafitecture.de/` (neues Fenster).
+- Steht als letztes Element des Inhalts in den Ansichten `#impressum` und `#datenschutz` (`index.html`) sowie `#legal-notice` und `#privacy` (`en/index.html`), direkt vor der Fußzeile.
+- Markup: Inhalt von `kit/grafitecture-credit/snippet.de.html` bzw. `snippet.en.html`, unverändert eingefügt. CSS: `grafitecture-credit.css` unverändert am Ende von `css/site.css`.
+- **Ausnahme von den Farbregeln:** Die Farben des Feldes (Lime `#dafd55`, `#435960`, Weiß) und seine Größe gehören der Agentur, nicht Covendos. Sie bleiben so, auch wenn sonst nur Covendos-Rot, Slate, Mist, Ink und Weiß gelten. Am Feld nichts an Covendos anpassen.
+- Quelle ist das Kit in `grafitecture/lannee_webseite`, Ordner `kit/grafitecture-credit/` (README dort). Änderungen nur dort machen und bei einer neuen Version Ordner, Schnipsel und CSS hier nachziehen.
+- Eine zusätzliche Zeile wie „Konzeption und Gestaltung: Grafitecture“ gehört nicht mehr ins Impressum (das Feld nennt die Agentur).
 
 ## Vor dem Livegang offen
 
