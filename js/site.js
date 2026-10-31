@@ -91,8 +91,9 @@ $$('.view a[href="#"], #brand a[href="#"]').forEach(a => a.addEventListener('cli
 route();
 
 /* =========================================================
-   Logo-Intro: Das Logo steht beim Öffnen groß im Hero (Klasse .intro,
-   gesetzt im <head>) und gleitet dann an seinen Platz im Header.
+   Logo-Intro (nur Tablet und mobil, bis 1200 px): Das Logo steht beim
+   Öffnen groß über der Headline (Klasse .intro, gesetzt im <head>) und
+   gleitet dann an seinen Platz im Header. Desktop: kein Intro.
    Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort.
    ========================================================= */
 (function logoIntro(){
@@ -113,13 +114,13 @@ route();
     clearTimeout(timer);
     TRIGGERS.forEach(ev => window.removeEventListener(ev, slide, true));
 
-    // Ausgangslage merken: großes Logo und die Inhalte, die mitgleiten
+    // Ausgangslage merken: großes Logo und die Seite, die nach oben mitgleitet
     const from = big.getBoundingClientRect();
     const opacity = getComputedStyle(big).opacity;
-    // #site gleitet als Ganzes (gemessen an .hero-foot), Kicker und Headline zusätzlich seitlich
-    const page = $('#site'), parts = [$('.hero-kicker'), $('.hero-title')];
-    const measured = [$('.hero-foot'), ...parts];
-    const before = measured.map(el => el.getBoundingClientRect());
+    // Fenster inzwischen breiter als 1200 px (großes Logo ausgeblendet): einfach beenden
+    if (!from.width) { root.classList.remove('intro'); return; }
+    const page = $('#site'), ref = $('.hero-kicker');
+    const before = ref.getBoundingClientRect().top;
 
     // Flieger: Kopie des großen Logos, fix positioniert, wird auf das Header-Logo verkleinert
     const fly = big.cloneNode();
@@ -127,22 +128,16 @@ route();
     Object.assign(fly.style, { left: from.left + 'px', top: from.top + 'px', width: from.width + 'px', height: from.height + 'px', opacity });
     document.body.appendChild(fly);
 
-    // Endlage herstellen, dann die Inhalte per FLIP von der alten Lage aus hineingleiten lassen
+    // Endlage herstellen, dann die Seite per FLIP von der alten Lage aus hochgleiten lassen
     root.classList.add('intro-fly');
     root.classList.remove('intro');
-    const after = measured.map(el => el.getBoundingClientRect());
-    const dyPage = before[0].top - after[0].top;
-    const flip = (el, dx, dy) => {
-      if (Math.abs(dx) < .5 && Math.abs(dy) < .5) return;
-      el.style.transition = 'none';
-      el.style.transform = `translate(${dx}px, ${dy}px)`;
-      el.getBoundingClientRect();
-      el.style.transition = `transform ${DUR}ms ${EASE}`;
-      el.style.transform = '';
-      setTimeout(() => { el.style.transition = ''; }, DUR + 50);
-    };
-    flip(page, 0, dyPage);
-    parts.forEach((el, i) => flip(el, before[i+1].left - after[i+1].left, before[i+1].top - after[i+1].top - dyPage));
+    const dy = before - ref.getBoundingClientRect().top;
+    page.style.transition = 'none';
+    page.style.transform = `translateY(${dy}px)`;
+    page.getBoundingClientRect();
+    page.style.transition = `transform ${DUR}ms ${EASE}`;
+    page.style.transform = '';
+    setTimeout(() => { page.style.transition = ''; }, DUR + 50);
 
     // Flieger folgt dem Header-Logo Bild für Bild (das Ziel kann sich beim Scrollen verkleinern)
     const t0 = performance.now();
