@@ -128,6 +128,29 @@ main{padding-top:calc(var(--logo-big) + 2 * var(--s-1) + 1px)}
 .brand-dot{display:inline-block;width:.15em;height:.15em;margin-left:.05em;border-radius:50%;background:var(--red);transform:scale(0);animation:pop .55s .95s cubic-bezier(.3,1.7,.5,1) forwards}
 @keyframes rise{to{transform:none}}
 @keyframes pop{to{transform:scale(1)}}
+
+/* Logo-Intro: Beim Öffnen der Startseite steht das Logo groß im Hero
+   (Desktop ab 1201 px links neben der Headline, darunter groß über der
+   Headline) und gleitet
+   dann in den Header. Klasse .intro setzt ein kleines Script im <head>,
+   den Ablauf steuert js/site.js. Ohne .intro ist .hero-logo unsichtbar. */
+.hero-logo{display:none}
+.intro .hero-logo{display:block;height:auto;animation:logo-in .9s var(--ease) both}
+.intro .site-header .logo img,.intro-fly .site-header .logo img{visibility:hidden}
+@keyframes logo-in{from{opacity:0;transform:translateY(1.618rem)}}
+@media (min-width:1201px){
+  .intro .hero{display:grid;grid-template-columns:minmax(0,1fr) max-content;column-gap:clamp(1.618rem,4.2vw,6.854rem)}
+  .intro .hero-logo{grid-column:1;grid-row:2;align-self:center;width:100%;max-width:42rem}
+  .intro .hero-kicker{grid-column:2;grid-row:1;width:0;min-width:100%}
+  .intro .hero-title{grid-column:2;grid-row:2}
+  .intro .hero-foot{grid-column:1 / -1;grid-row:3}
+}
+@media (max-width:1200px){
+  /* Tablet und mobil: über der Headline, rund doppelt so groß wie im Header */
+  .intro .hero-logo{width:min(85%, 26rem);margin-bottom:var(--s-4)}
+}
+.logo-flyer{position:fixed;z-index:60;margin:0;transform-origin:0 0;pointer-events:none;will-change:transform}
+
 .hero-foot{margin-top:clamp(2.618rem,5vw,6.854rem);align-items:end}
 .hero-foot .legend{font-size:var(--fs-h6)}
 .ctas{display:flex;flex-wrap:wrap;gap:var(--s-2);margin-top:var(--s-4)}

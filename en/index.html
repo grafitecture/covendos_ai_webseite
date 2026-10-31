@@ -12,6 +12,7 @@
 <link rel="icon" href="../img/covendos-icon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#ffffff">
 <link rel="preload" href="../fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+<script>/* Logo-Intro nur beim Öffnen der Startseite: nicht bei Sprungmarken, nicht beim Sprachwechsel innerhalb der Seite, nicht bei reduzierter Bewegung. Ablauf in js/site.js */(function(d){try{var h=location.hash,r=document.referrer;if((h===''||h==='#'||h==='#top')&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!(r&&r.indexOf(location.origin+'/')===0)){d.classList.add('intro');setTimeout(function(){if(!d.classList.contains('intro-js'))d.classList.remove('intro')},4000)}}catch(e){}})(document.documentElement);</script>
 <link rel="stylesheet" href="../css/site.css">
 </head>
 <body>
@@ -42,6 +43,7 @@
 
 <!-- ================= HERO ================= -->
 <section class="wrap hero" aria-labelledby="hero-title">
+  <img class="hero-logo" src="../img/covendos-logo.svg" width="128" height="82" alt="" aria-hidden="true">
   <p class="t-h6 hero-kicker">Human-led AI for pharma and healthcare. From Mannheim, for all of Germany.</p>
   <h1 class="t-h1 hero-title" id="hero-title"><span class="line"><span>More time</span></span><span class="line"><span>for medicine<i class="brand-dot" aria-hidden="true"></i></span></span></h1>
   <div class="phi hero-foot">
