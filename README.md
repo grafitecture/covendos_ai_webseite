@@ -16,6 +16,7 @@ fonts/source-sans-3.woff2  Web-Fallback-Schrift, lokal (keine Google-Verbindung)
 img/                       Bilder (WebP), Logo als SVG, Favicon
 img/team/                  Porträts (fiktives Team, Higgsfield AI)
 kit/grafitecture-credit/   Grafitecture-Feld (Kit v1.2, unverändert aus grafitecture/lannee_webseite)
+middleware.js              Passwortschutz mit Login-Seite (nur bei Vercel)
 .htaccess                  HTTPS, Caching, Sicherheits-Header für Apache (Managed Server comvos)
 ```
 
@@ -59,6 +60,17 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Mobiles Menü bis 1200 px Breite (wegen Sprachumschalter im Header)
 - Logo-Intro (nur Tablet und mobil, bis 1200 px): Beim Öffnen der Startseite steht das Logo rund doppelt so groß über der Headline und gleitet nach rund 2,6 s an seinen Platz im Header; die Seite gleitet mit. Auf dem Desktop (ab 1201 px) gibt es bewusst kein Intro, das Logo steht wie immer im Header. Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort. Kein Intro bei Sprungmarken (`#kontakt` usw.), beim Sprachwechsel und bei „Bewegung reduzieren“. Bausteine: kleines Script im `<head>` und `<img class="hero-logo">` im Hero (beide Sprachen), CSS-Block „Logo-Intro“ in `css/site.css`, Funktion `logoIntro()` in `js/site.js` (Standzeit `HOLD`, Dauer `DUR`)
 
+## Passwortschutz (Vorschau)
+
+- Solange die Seite nicht öffentlich ist, steht eine Login-Seite davor: `middleware.js` (Vercel Routing Middleware). Ohne Anmeldung ist nichts erreichbar außer Logo, Favicon und Schrift für die Login-Seite.
+- Passwort: Umgebungsvariable `SITE_PASSWORD` im Vercel-Projekt (Production und Preview), nicht im Code. Ändern unter Vercel → Settings → Environment Variables, danach neu deployen. Ein neues Passwort meldet alle ab.
+- Login-Seite auf Deutsch unter `/`, auf Englisch unter `/en/`. Nach der Anmeldung geht es zur aufgerufenen Seite inklusive Sprungmarke (z. B. `#karriere`).
+- Zugang gilt 30 Tage pro Browser (Cookie `covendos_zugang`). Abmelden: `/__logout`.
+- Solange der Schutz aktiv ist: `robots.txt` sperrt alles, alle Antworten tragen `X-Robots-Tag: noindex`.
+- Fehlt `SITE_PASSWORD`, bleibt die Seite gesperrt.
+- Schutz entfernen: `middleware.js` löschen und deployen.
+- Gilt nur bei Vercel. Auf dem Apache-Server bei comvos greift `middleware.js` nicht; dort bräuchte es einen eigenen Schutz (z. B. `.htaccess` mit Passwortdatei).
+
 ## Grafitecture-Feld (Impressum und Datenschutz)
 
 - Lime-Feld mit Grafitecture-Logo, „Marken mit KI.“ / „Brands with AI.“ und Link auf `https://www.grafitecture.de/` (neues Fenster).
@@ -77,5 +89,6 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - [ ] Fiktives Team und Beispielstellen durch echte Inhalte ersetzen
 - [ ] Englische Texte gegenlesen lassen (Muttersprachler, Fachbegriffe Pharma/Recht)
 - [ ] Corporate S als Webfont lizenzieren (optional)
+- [ ] Passwortschutz entfernen (`middleware.js` löschen), wenn die Seite öffentlich sein soll
 
 Konzeption und Gestaltung: Grafitecture GmbH, Mannheim.
