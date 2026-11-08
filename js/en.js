@@ -1,5 +1,5 @@
 /* =========================================================
-   Covendos Healthcare Group – English content and UI strings
+   HEALTHKLICK – English content and UI strings
    Counterpart: js/de.js. Shared logic: js/site.js
    ========================================================= */
 const SITE = (() => {
@@ -8,20 +8,6 @@ const SITE = (() => {
     otc: ['Advice at the pharmacy counter','Pharmacy telesales and training','Professional portals for pharmacy teams','Social media and search','Consumer hotline','Point of sale']
   };
 
-  const TEAM = [
-    {id:'wenninger', name:'Dr. Clara Wenninger', mail:'clara.wenninger', role:'Founder and CEO', bio:'Internist, then 15 years in commercial leadership in the pharmaceutical industry. Responsible for strategy and client relationships.', city:'Mannheim'},
-    {id:'osei', name:'Malik Osei', mail:'malik.osei', role:'Co-founder, Chief Agent Officer', bio:'Builds the agent platform. Previously machine learning for insurers and hospital groups.', city:'Remote, Berlin'},
-    {id:'marchetti', name:'Dr. Sofia Marchetti', mail:'sofia.marchetti', role:'Medical Director', bio:'Specialist in pharmacology. Responsible for medical information and pharmacovigilance.', city:'Mannheim', agent:'Vigilance Agent'},
-    {id:'reiter', name:'Jonas Reiter', mail:'jonas.reiter', role:'Head of Hybrid Field Force', bio:'Twelve years in field sales and key account management. Leads the eReps.', city:'Mannheim', agent:'Briefing Agent'},
-    {id:'demir', name:'Aylin Demir', mail:'aylin.demir', role:'Lead Patient Journeys', bio:'Registered nurse. Develops support programmes that practices are happy to recommend.', city:'Remote, Cologne', agent:'Companion Agent'},
-    {id:'lindqvist', name:'Prof. Dr. Henrik Lindqvist', mail:'henrik.lindqvist', role:'Senior Advisor Market Access', bio:'Health economist. Advises on benefit assessment, AMNOG and price negotiations.', city:'Remote, Hamburg'},
-    {id:'hartmann', name:'Mei Lin Hartmann', mail:'meilin.hartmann', role:'Modular Content Architect', bio:'Designer and copywriter. Breaks campaigns down into modules that can be approved.', city:'Mannheim', agent:'Content Agent'},
-    {id:'kraemer', name:'Tobias Krämer', mail:'tobias.kraemer', role:'AI Governance and Compliance', bio:'Lawyer specialising in medicinal products advertising law. Oversees HWG, AÜG, EU AI Act and GDPR.', city:'Mannheim', agent:'Compliance Agent'},
-    {id:'fischbach', name:'Nora Fischbach', mail:'nora.fischbach', role:'Data Scientist, Next Best Action', bio:'Physicist. Builds models for segmentation and early warning signals.', city:'Remote, Leipzig', agent:'Insight Agent'},
-    {id:'nowak', name:'Lukas Nowak', mail:'lukas.nowak', role:'Lifecycle Strategist', bio:'Specialist in established brands, tenders and rebate contracts after patent expiry.', city:'Mannheim'},
-    {id:'raman', name:'Priya Raman', mail:'priya.raman', role:'Agent Trainer, Conversation Design', bio:'Linguist. Teaches agents how to talk to doctors and patients, and when to hand over to a person.', city:'Remote, Munich'},
-    {id:'albers', name:'Greta Albers', mail:'greta.albers', role:'Lead OTC and Pharmacy', bio:'Pharmacist. Responsible for telesales and training for pharmacy teams.', city:'Remote, Bremen'}
-  ];
 
   const JOBS = [
     {id:'innendienst-kardio', t:'Inside pharma consultant, cardiology', k:'own', where:'Remote, anywhere in Germany', time:'Full-time or part-time'},
@@ -33,12 +19,12 @@ const SITE = (() => {
   ];
 
   const AGENTS = [
-    {name:'Briefing Agent', text:'Before every appointment, summarises history, open questions and approved materials on a single page.', owner:'Jonas Reiter'},
-    {name:'Compliance Agent', text:'Checks call notes, emails and materials against the HWG and your SOPs before anything goes out. Also monitors the deadlines of temporary staffing assignments.', owner:'Tobias Krämer'},
-    {name:'Content Agent', text:'Builds variants for every channel from approved modules. It never writes new promotional claims.', owner:'Mei Lin Hartmann'},
-    {name:'Vigilance Agent', text:'Detects possible side effects in conversations and messages and starts the reporting process.', owner:'Dr. Sofia Marchetti'},
-    {name:'Companion Agent', text:'Reminds patients, answers everyday questions from reviewed content and brings in nurses when needed.', owner:'Aylin Demir'},
-    {name:'Insight Agent', text:'Finds patterns in prescriptions and contacts and suggests the next best action.', owner:'Nora Fischbach'}
+    {name:'Briefing Agent', text:'Before every appointment, summarises history, open questions and approved materials on a single page.', owner:'Head of Hybrid Field Force'},
+    {name:'Compliance Agent', text:'Checks call notes, emails and materials against the HWG and your SOPs before anything goes out. Also monitors the deadlines of temporary staffing assignments.', owner:'AI Governance and Compliance'},
+    {name:'Content Agent', text:'Builds variants for every channel from approved modules. It never writes new promotional claims.', owner:'Modular Content Architect'},
+    {name:'Vigilance Agent', text:'Detects possible side effects in conversations and messages and starts the reporting process.', owner:'Medical Director'},
+    {name:'Companion Agent', text:'Reminds patients, answers everyday questions from reviewed content and brings in nurses when needed.', owner:'Lead Patient Journeys'},
+    {name:'Insight Agent', text:'Finds patterns in prescriptions and contacts and suggests the next best action.', owner:'Data Scientist, Next Best Action'}
   ];
 
   const TOPICS = [
@@ -130,14 +116,13 @@ const SITE = (() => {
     ['Spacing','0.382rem','spacing only','','']
   ];
   const COLORS = [
-    ['White','#ffffff','Surface'],['Mist','#f3f5f7','Surfaces, sections'],['Line','#dae1e5','Lines, frames'],
-    ['Slate','#5e6f79','Secondary text, rings'],['Ink','#1d2a32','Text, buttons'],['Covendos red','#ed192e','Logo, dot, signal']
+    ['Strawberry Red','#FB3640','Logo, cross, signal'],['Imperial Blue','#0A2463','Text, buttons, footer'],['Cerulean','#247BA0','Text links, hover, accent'],
+    ['Charcoal','#605F5E','Secondary text, rings'],['Alabaster Grey','#E2E2E2','Surfaces, lines'],['White (paper)','#FFFFFF','Background, not a brand colour']
   ];
 
   const t = {
     owner:'Responsible:',
-    portrait:n => `Portrait of ${n}`,
-    own:'At Covendos', client:'Via Covendos at a client',
+    own:'At Healthklick', client:'Via Healthklick at a client',
     applyBtn:'Apply', initiative:'Speculative application',
     paperNo:'No. ', paperFacts:(f,m) => `For ${f}. ${m}-minute read.`, paperBtn:'Request white paper',
     to:'To', subj:'Subject',
@@ -148,9 +133,9 @@ const SITE = (() => {
       busy:'A save dialog is already open. Please wait a moment.',
       failed:(w,a) => `Saving is not possible in this view. Please use ${a}.`
     },
-    pdfFooter:'Covendos Healthcare Group  |  covendos.ai  |  More time for medicine',
+    pdfFooter:'HEALTHKLICK  |  A service of Grafitecture GmbH  |  More time for medicine',
     brief:{
-      greet:'Hello,', intro:'I would like to arrange a conversation with the Covendos Healthcare Group.',
+      greet:'Hello,', intro:'I would like to arrange a conversation with Healthklick.',
       topicsH:'Topics:', noTopics:'none selected yet', contextH:'Context:',
       market:'Market', area:'Therapeutic area', phase:'Lifecycle phase', time:'Timeframe', open:'open',
       msgH:'Message:', bye:'Kind regards', namePh:'[Name]',
@@ -171,12 +156,12 @@ const SITE = (() => {
       brTitle:'Meeting briefing', contactH:'Contact', noData:'No details yet', topicsH:'Selected topics',
       noTopics:'No topics selected yet.', contextH:'Context', msgH:'Message',
       brNote:m => `Please send to ${m}. We will get back to you within one working day.`,
-      brFile:'covendos-briefing', brWhat:'Your briefing', brAlt:'“Copy text”',
+      brFile:'healthklick-briefing', brWhat:'Your briefing', brAlt:'“Copy text”',
       clTitle:'Topic checklist', clSub:'Tick the topics you would like to discuss with us.', clContextH:'Your context',
       clContext:['Market:  Rx  /  OTC  /  both','Therapeutic area:','Lifecycle phase:','Timeframe:'],
       clContact:['Name:','Company and role:','Email and phone:'],
       clNote:m => `Send the completed checklist to ${m} or bring it to our meeting.`,
-      clFile:'covendos-topic-checklist.pdf', clWhat:'The checklist', clAlt:'the topic selection in the form'
+      clFile:'healthklick-topic-checklist.pdf', clWhat:'The checklist', clAlt:'the topic selection in the form'
     },
     apply:{
       greet:'Hello,', line:j => `I would like to apply for: ${j}.`, open:'open',
@@ -187,20 +172,20 @@ const SITE = (() => {
     },
     wp:{
       label:'WHITE PAPER', forLine:f => `For ${f}  |  October 2026`, readerLine:r => `Provided for ${r}`,
-      aboutH:'About the Covendos Healthcare Group',
-      about:'The Covendos Healthcare Group handles sales, patient services, medical information and staffing for pharmaceutical companies. AI agents prepare, document and follow up. Experienced people lead every conversation that matters. Headquarters in Mannheim, teams across Germany. The group comprises Covendos GmbH and helena GmbH.',
+      aboutH:'About Healthklick',
+      about:'Healthklick handles sales, patient services, medical information and staffing for pharmaceutical companies. AI agents prepare, document and follow up. Experienced people lead every conversation that matters. Headquarters in Mannheim, teams across Germany. Healthklick is a service of Grafitecture GmbH, Mannheim.',
       cta:'Arrange a meeting: ',
       thanks:(n,t) => `Thank you, ${n}. “${t}” is ready.`, read:'Read here', readClose:'Close reader',
       errFirst:'Please enter your first name.', errLast:'Please enter your last name.',
       errMail:'Please enter a valid email address.', errCompany:'Please enter your company.',
-      file:id => `covendos-white-paper-${id}.pdf`, what:'The white paper', alt:'“Read here”'
+      file:id => `healthklick-white-paper-${id}.pdf`, what:'The white paper', alt:'“Read here”'
     }
   };
 
   return {
     lang:'en', locale:'en-GB', base:'../',
-    mail:'info@covendos.com', apply:'karriere@covendos.com',
+    mail:'martin.schweppe@grafitecture.de', apply:'martin.schweppe@grafitecture.de',
     alias:{},
-    CHANNELS, TEAM, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t
+    CHANNELS, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t
   };
 })();

@@ -1,5 +1,5 @@
 /* =========================================================
-   Covendos Healthcare Group – deutsche Inhalte und Texte
+   HEALTHKLICK – deutsche Inhalte und Texte
    Gegenstück: js/en.js. Gemeinsame Logik: js/site.js
    ========================================================= */
 const SITE = (() => {
@@ -8,20 +8,6 @@ const SITE = (() => {
     otc: ['Beratung im Handverkauf','Apotheken-Telesales und Schulungen','Fachportale für PTA und Apotheker','Social Media und Suche','Verbraucher-Hotline','Point of Sale']
   };
 
-  const TEAM = [
-    {id:'wenninger', name:'Dr. Clara Wenninger', mail:'clara.wenninger', role:'Gründerin und CEO', bio:'Internistin, danach 15 Jahre Commercial Leadership in der Pharmaindustrie. Verantwortet Strategie und Kundenbeziehungen.', city:'Mannheim'},
-    {id:'osei', name:'Malik Osei', mail:'malik.osei', role:'Co-Founder, Chief Agent Officer', bio:'Baut die Agentenplattform. Vorher Machine Learning für Versicherer und Krankenhausketten.', city:'Homeoffice Berlin'},
-    {id:'marchetti', name:'Dr. Sofia Marchetti', mail:'sofia.marchetti', role:'Medical Director', bio:'Fachärztin für Pharmakologie. Verantwortet Medical Information und Pharmakovigilanz.', city:'Mannheim', agent:'Vigilanz-Agent'},
-    {id:'reiter', name:'Jonas Reiter', mail:'jonas.reiter', role:'Head of Hybrid Field Force', bio:'Zwölf Jahre Außendienst und Key Account Management. Führt die eReps.', city:'Mannheim', agent:'Briefing-Agent'},
-    {id:'demir', name:'Aylin Demir', mail:'aylin.demir', role:'Lead Patient Journeys', bio:'Gesundheits- und Krankenpflegerin. Entwickelt Begleitprogramme, die Praxen gern empfehlen.', city:'Homeoffice Köln', agent:'Begleit-Agent'},
-    {id:'lindqvist', name:'Prof. Dr. Henrik Lindqvist', mail:'henrik.lindqvist', role:'Senior Advisor Market Access', bio:'Gesundheitsökonom. Berät zu Nutzenbewertung, AMNOG und Preisverhandlung.', city:'Homeoffice Hamburg'},
-    {id:'hartmann', name:'Mei Lin Hartmann', mail:'meilin.hartmann', role:'Modular Content Architect', bio:'Designerin und Texterin. Zerlegt Kampagnen in freigabefähige Module.', city:'Mannheim', agent:'Content-Agent'},
-    {id:'kraemer', name:'Tobias Krämer', mail:'tobias.kraemer', role:'AI Governance und Compliance', bio:'Jurist mit Schwerpunkt Heilmittelwerberecht. Wacht über HWG, AÜG, EU AI Act und DSGVO.', city:'Mannheim', agent:'Compliance-Agent'},
-    {id:'fischbach', name:'Nora Fischbach', mail:'nora.fischbach', role:'Data Scientist, Next Best Action', bio:'Physikerin. Baut Modelle für Segmentierung und Frühwarnsignale.', city:'Homeoffice Leipzig', agent:'Insight-Agent'},
-    {id:'nowak', name:'Lukas Nowak', mail:'lukas.nowak', role:'Lifecycle Strategist', bio:'Spezialist für etablierte Marken, Ausschreibungen und Rabattverträge nach Patentablauf.', city:'Mannheim'},
-    {id:'raman', name:'Priya Raman', mail:'priya.raman', role:'Agent Trainer, Conversation Design', bio:'Linguistin. Bringt Agenten bei, wie man mit Ärzten und Patienten spricht und wann man an Menschen übergibt.', city:'Homeoffice München'},
-    {id:'albers', name:'Greta Albers', mail:'greta.albers', role:'Lead OTC und Apotheke', bio:'Apothekerin. Verantwortet Telesales und Schulungen für Apothekenteams.', city:'Homeoffice Bremen'}
-  ];
 
   const JOBS = [
     {id:'innendienst-kardio', t:'Pharmaberater:in im Innendienst, Kardiologie', k:'own', where:'Homeoffice, bundesweit', time:'Voll- oder Teilzeit'},
@@ -33,12 +19,12 @@ const SITE = (() => {
   ];
 
   const AGENTS = [
-    {name:'Briefing-Agent', text:'Fasst vor jedem Termin Historie, offene Fragen und freigegebene Materialien auf einer Seite zusammen.', owner:'Jonas Reiter'},
-    {name:'Compliance-Agent', text:'Prüft Gesprächsnotizen, E-Mails und Materialien gegen HWG und Ihre SOPs, bevor etwas hinausgeht. Überwacht außerdem die Fristen der Arbeitnehmerüberlassung.', owner:'Tobias Krämer'},
-    {name:'Content-Agent', text:'Baut aus freigegebenen Modulen Varianten für jeden Kanal. Neue Werbeaussagen formuliert er nie.', owner:'Mei Lin Hartmann'},
-    {name:'Vigilanz-Agent', text:'Erkennt mögliche Nebenwirkungen in Gesprächen und Nachrichten und startet den Meldeprozess.', owner:'Dr. Sofia Marchetti'},
-    {name:'Begleit-Agent', text:'Erinnert Patienten, beantwortet Alltagsfragen aus geprüften Inhalten und holt Pflegefachkräfte dazu, wenn es nötig ist.', owner:'Aylin Demir'},
-    {name:'Insight-Agent', text:'Findet Muster in Verordnungen und Kontakten und schlägt die nächste beste Aktion vor.', owner:'Nora Fischbach'}
+    {name:'Briefing-Agent', text:'Fasst vor jedem Termin Historie, offene Fragen und freigegebene Materialien auf einer Seite zusammen.', owner:'Head of Hybrid Field Force'},
+    {name:'Compliance-Agent', text:'Prüft Gesprächsnotizen, E-Mails und Materialien gegen HWG und Ihre SOPs, bevor etwas hinausgeht. Überwacht außerdem die Fristen der Arbeitnehmerüberlassung.', owner:'AI Governance und Compliance'},
+    {name:'Content-Agent', text:'Baut aus freigegebenen Modulen Varianten für jeden Kanal. Neue Werbeaussagen formuliert er nie.', owner:'Modular Content Architect'},
+    {name:'Vigilanz-Agent', text:'Erkennt mögliche Nebenwirkungen in Gesprächen und Nachrichten und startet den Meldeprozess.', owner:'Medical Director'},
+    {name:'Begleit-Agent', text:'Erinnert Patienten, beantwortet Alltagsfragen aus geprüften Inhalten und holt Pflegefachkräfte dazu, wenn es nötig ist.', owner:'Lead Patient Journeys'},
+    {name:'Insight-Agent', text:'Findet Muster in Verordnungen und Kontakten und schlägt die nächste beste Aktion vor.', owner:'Data Scientist, Next Best Action'}
   ];
 
   const TOPICS = [
@@ -130,14 +116,13 @@ const SITE = (() => {
     ['Abstand','0.382rem','nur Abstand','','']
   ];
   const COLORS = [
-    ['Weiß','#ffffff','Fläche'],['Mist','#f3f5f7','Flächen, Sektionen'],['Linie','#dae1e5','Linien, Rahmen'],
-    ['Slate','#5e6f79','Sekundärtext, Kreise'],['Ink','#1d2a32','Schrift, Buttons'],['Covendos-Rot','#ed192e','Logo, Punkt, Signal']
+    ['Strawberry Red','#FB3640','Logo, Kreuz, Signal'],['Imperial Blue','#0A2463','Schrift, Buttons, Fußzeile'],['Cerulean','#247BA0','Textlinks, Hover, Akzent'],
+    ['Charcoal','#605F5E','Sekundärtext, Kreise'],['Alabaster Grey','#E2E2E2','Flächen, Linien'],['Weiß (Papier)','#FFFFFF','Grundfläche, keine Markenfarbe']
   ];
 
   const t = {
     owner:'Verantwortlich:',
-    portrait:n => `Porträt von ${n}`,
-    own:'Bei Covendos', client:'Über Covendos beim Kunden',
+    own:'Bei Healthklick', client:'Über Healthklick beim Kunden',
     applyBtn:'Bewerben', initiative:'Initiativbewerbung',
     paperNo:'Nr. ', paperFacts:(f,m) => `Für ${f}. Lesezeit ${m} Minuten.`, paperBtn:'Whitepaper anfordern',
     to:'An', subj:'Betreff',
@@ -148,9 +133,9 @@ const SITE = (() => {
       busy:'Es ist schon ein Speichern-Dialog offen. Bitte kurz warten.',
       failed:(w,a) => `Speichern ist in dieser Ansicht nicht möglich. Nutzen Sie ${a}.`
     },
-    pdfFooter:'Covendos Healthcare Group  |  covendos.ai  |  Mehr Zeit für Medizin',
+    pdfFooter:'HEALTHKLICK  |  Ein Angebot der Grafitecture GmbH  |  Mehr Zeit für Medizin',
     brief:{
-      greet:'Guten Tag,', intro:'ich interessiere mich für ein Gespräch mit der Covendos Healthcare Group.',
+      greet:'Guten Tag,', intro:'ich interessiere mich für ein Gespräch mit Healthklick.',
       topicsH:'Themen:', noTopics:'noch keine ausgewählt', contextH:'Kontext:',
       market:'Markt', area:'Indikationsgebiet', phase:'Phase im Lebenszyklus', time:'Zeitrahmen', open:'offen',
       msgH:'Nachricht:', bye:'Viele Grüße', namePh:'[Name]',
@@ -171,12 +156,12 @@ const SITE = (() => {
       brTitle:'Gesprächs-Briefing', contactH:'Kontakt', noData:'Noch keine Angaben', topicsH:'Gewählte Themen',
       noTopics:'Noch keine Themen gewählt.', contextH:'Kontext', msgH:'Nachricht',
       brNote:m => `Bitte senden an ${m}. Wir melden uns innerhalb eines Werktags.`,
-      brFile:'covendos-briefing', brWhat:'Ihr Briefing', brAlt:'„Text kopieren“',
+      brFile:'healthklick-briefing', brWhat:'Ihr Briefing', brAlt:'„Text kopieren“',
       clTitle:'Themen-Checkliste', clSub:'Kreuzen Sie an, worüber Sie mit uns sprechen möchten.', clContextH:'Ihr Kontext',
       clContext:['Markt:  Rx  /  OTC  /  beides','Indikationsgebiet:','Phase im Lebenszyklus:','Zeitrahmen:'],
       clContact:['Name:','Unternehmen und Funktion:','E-Mail und Telefon:'],
       clNote:m => `Ausgefüllt an ${m} senden oder im Gespräch mitbringen.`,
-      clFile:'covendos-themen-checkliste.pdf', clWhat:'Die Checkliste', clAlt:'die Themenauswahl im Formular'
+      clFile:'healthklick-themen-checkliste.pdf', clWhat:'Die Checkliste', clAlt:'die Themenauswahl im Formular'
     },
     apply:{
       greet:'Guten Tag,', line:j => `hiermit bewerbe ich mich: ${j}.`, open:'offen',
@@ -187,20 +172,20 @@ const SITE = (() => {
     },
     wp:{
       label:'WHITEPAPER', forLine:f => `Für ${f}  |  Oktober 2026`, readerLine:r => `Bereitgestellt für ${r}`,
-      aboutH:'Über die Covendos Healthcare Group',
-      about:'Die Covendos Healthcare Group übernimmt Vertrieb, Patient Services, Medical Information und Personal für Pharmaunternehmen. KI-Agenten bereiten vor, dokumentieren und fassen nach. Erfahrene Menschen führen jedes Gespräch, das zählt. Zentrale in Mannheim, Teams in ganz Deutschland. Zur Gruppe gehören die Covendos GmbH und die helena GmbH.',
+      aboutH:'Über Healthklick',
+      about:'Healthklick übernimmt Vertrieb, Patient Services, Medical Information und Personal für Pharmaunternehmen. KI-Agenten bereiten vor, dokumentieren und fassen nach. Erfahrene Menschen führen jedes Gespräch, das zählt. Zentrale in Mannheim, Teams in ganz Deutschland. Healthklick ist ein Angebot der Grafitecture GmbH, Mannheim.',
       cta:'Gespräch vereinbaren: ',
       thanks:(n,t) => `Danke, ${n}. „${t}“ ist bereit.`, read:'Hier lesen', readClose:'Lesen schließen',
       errFirst:'Bitte Vornamen angeben.', errLast:'Bitte Nachnamen angeben.',
       errMail:'Bitte eine gültige E-Mail-Adresse angeben.', errCompany:'Bitte Unternehmen angeben.',
-      file:id => `covendos-whitepaper-${id}.pdf`, what:'Das Whitepaper', alt:'„Hier lesen“'
+      file:id => `healthklick-whitepaper-${id}.pdf`, what:'Das Whitepaper', alt:'„Hier lesen“'
     }
   };
 
   return {
     lang:'de', locale:'de-DE', base:'',
-    mail:'info@covendos.com', apply:'karriere@covendos.com',
+    mail:'martin.schweppe@grafitecture.de', apply:'martin.schweppe@grafitecture.de',
     alias:{marke:'brand'},
-    CHANNELS, TEAM, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t
+    CHANNELS, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t
   };
 })();

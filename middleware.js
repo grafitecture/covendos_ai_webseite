@@ -1,5 +1,5 @@
 /*
- * Passwortschutz für covendos.ai (Vercel Routing Middleware)
+ * Passwortschutz für die HEALTHKLICK-Website (Vercel Routing Middleware)
  *
  * Läuft vor jeder Anfrage. Ohne gültiges Zugangs-Cookie zeigt sie eine Login-Seite
  * (Deutsch unter /, Englisch unter /en/), mit Cookie wird die Seite normal ausgeliefert.
@@ -8,24 +8,24 @@
  *   Nach einer Änderung neu deployen. Neues Passwort = alle bisherigen Zugänge ungültig.
  * - Ohne SITE_PASSWORD bleibt die Seite gesperrt (kein Zugang ohne Passwort).
  * - Abmelden: /__logout
- * - Zugang gilt 30 Tage pro Browser (Cookie covendos_zugang).
+ * - Zugang gilt 30 Tage pro Browser (Cookie healthklick_zugang).
  * - Schutz entfernen: diese Datei löschen und neu deployen.
- * - Gilt nur bei Vercel. Auf dem Apache-Server (comvos) greift diese Datei nicht.
+ * - Gilt nur bei Vercel. Auf einem Apache-Server greift diese Datei nicht.
  */
 
 export const config = { runtime: 'edge' };
 
-const COOKIE = 'covendos_zugang';
+const COOKIE = 'healthklick_zugang';
 const MAX_AGE = 60 * 60 * 24 * 30;
 const LOGIN = '/__login';
 const LOGOUT = '/__logout';
 
 // Ohne Anmeldung erreichbar: nur was die Login-Seite selbst braucht
-const OPEN = new Set(['/img/covendos-logo.svg', '/img/covendos-icon.svg', '/fonts/source-sans-3.woff2']);
+const OPEN = new Set(['/img/healthklick-logo.svg', '/img/healthklick-icon.svg', '/fonts/source-sans-3.woff2']);
 
 const TEXT = {
   de: {
-    title: 'Anmelden – Covendos Healthcare Group',
+    title: 'Anmelden – HEALTHKLICK',
     kicker: 'Geschützte Vorschau',
     claim: ['Mehr Zeit', 'für Medizin'],
     lead: 'Diese Website ist noch nicht öffentlich. Bitte geben Sie das Passwort ein.',
@@ -38,11 +38,11 @@ const TEXT = {
     error: 'Das Passwort stimmt nicht. Bitte versuchen Sie es noch einmal.',
     empty: 'Bitte geben Sie das Passwort ein.',
     setup: 'Der Zugang ist gerade nicht eingerichtet. Bitte versuchen Sie es später noch einmal.',
-    foot: 'Covendos Healthcare Group · Mannheim',
+    foot: 'HEALTHKLICK · ein Angebot der Grafitecture GmbH · Mannheim',
     langLabel: 'Sprache / Language',
   },
   en: {
-    title: 'Sign in – Covendos Healthcare Group',
+    title: 'Sign in – HEALTHKLICK',
     kicker: 'Protected preview',
     claim: ['More time', 'for medicine'],
     lead: 'This website is not public yet. Please enter the password.',
@@ -55,7 +55,7 @@ const TEXT = {
     error: 'That password is not correct. Please try again.',
     empty: 'Please enter the password.',
     setup: 'Access is not set up at the moment. Please try again later.',
-    foot: 'Covendos Healthcare Group · Mannheim',
+    foot: 'HEALTHKLICK · a service of Grafitecture GmbH · Mannheim',
     langLabel: 'Language / Sprache',
   },
 };
@@ -129,7 +129,7 @@ function pass() {
 }
 
 async function token(secret) {
-  const data = new TextEncoder().encode('covendos-zugang:v1:' + secret);
+  const data = new TextEncoder().encode('healthklick-zugang:v1:' + secret);
   const buf = await crypto.subtle.digest('SHA-256', data);
   return Array.from(new Uint8Array(buf), (b) => b.toString(16).padStart(2, '0')).join('');
 }
@@ -180,15 +180,16 @@ function page({ lang, next, hash = '', message = '', status }) {
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#ffffff">
 <title>${esc(t.title)}</title>
-<link rel="icon" href="/img/covendos-icon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/healthklick-icon.svg" type="image/svg+xml">
 <link rel="preload" href="/fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Source Sans 3";font-style:normal;font-weight:200 900;font-display:swap;src:url("/fonts/source-sans-3.woff2") format("woff2")}
-:root{--white:#fff;--mist:#f3f5f7;--line:#dae1e5;--slate:#5e6f79;--ink:#1d2a32;--red:#ed192e;--red-ink:#c01526;--error:#b42318;
+:root{--white:#fff;--mist:#e2e2e2;--line:#e2e2e2;--slate:#605f5e;--ink:#0a2463;--red:#fb3640;--blue:#247ba0;
+--kreuz:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 68'%3E%3Cpath d='M33.1 0L34.9 0C37.39 0 39.4 2.01 39.4 4.5L39.4 27.6C39.4 28.15 39.85 28.6 40.4 28.6L63.5 28.6C65.99 28.6 68 30.61 68 33.1L68 34.9C68 37.39 65.99 39.4 63.5 39.4L40.4 39.4C39.85 39.4 39.4 39.85 39.4 40.4L39.4 63.5C39.4 65.99 37.39 68 34.9 68L33.1 68C30.61 68 28.6 65.99 28.6 63.5L28.6 40.4C28.6 39.85 28.15 39.4 27.6 39.4L4.5 39.4C2.01 39.4 0 37.39 0 34.9L0 33.1C0 30.61 2.01 28.6 4.5 28.6L27.6 28.6C28.15 28.6 28.6 28.15 28.6 27.6L28.6 4.5C28.6 2.01 30.61 0 33.1 0Z'/%3E%3C/svg%3E");
 --font:"Corporate S","Corporate S Pro","Corporate Sans","Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
 --fs-h2:clamp(2.618rem,0.4rem + 6.8vw,11.089rem);--fs-h6:clamp(1.118rem,1rem + 0.4vw,1.618rem);--fs-small:clamp(0.75rem,0.7rem + 0.2vw,0.875rem);
 --s-1:0.618rem;--s-2:1rem;--s-3:1.618rem;--s-4:2.618rem;--s-5:4.236rem;--pad:clamp(1.25rem,4.2vw,6.854rem);--max:120rem;
---logo:clamp(3.618rem,2.6rem + 1.8vw,4.854rem);--ease:cubic-bezier(.2,.7,.1,1)}
+--logo:clamp(1.25rem,0.5rem + 1.25vw,2.2rem);--ease:cubic-bezier(.2,.7,.1,1)}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;background:var(--white);color:var(--ink);font-family:var(--font);font-size:1rem;line-height:1.618;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -206,7 +207,7 @@ h1{margin:0;font-size:var(--fs-h2);font-weight:300;line-height:.95;letter-spacin
 h1 .line{display:block;overflow:hidden;padding:.07em 0 .05em;margin:-.07em 0 -.05em}
 h1 .line>span{display:inline-block;transform:translateY(110%);animation:rise 1s var(--ease) forwards}
 h1 .line:nth-child(2)>span{animation-delay:.12s}
-.brand-dot{display:inline-block;width:.15em;height:.15em;margin-left:.05em;border-radius:50%;background:var(--red);transform:scale(0);animation:pop .55s .95s cubic-bezier(.3,1.7,.5,1) forwards}
+.brand-dot{display:inline-block;width:.3em;height:.3em;margin-left:.07em;background:var(--red);-webkit-mask:var(--kreuz) center/contain no-repeat;mask:var(--kreuz) center/contain no-repeat;transform:scale(0);animation:pop .55s .95s cubic-bezier(.3,1.7,.5,1) forwards}
 @keyframes rise{to{transform:none}}
 @keyframes pop{to{transform:scale(1)}}
 .phi{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.618fr);column-gap:clamp(1.618rem,4.2vw,6.854rem);row-gap:var(--s-4);margin-top:clamp(2.618rem,5vw,6.854rem);align-items:end}
@@ -214,22 +215,22 @@ h1 .line:nth-child(2)>span{animation-delay:.12s}
 .legend li{display:flex;align-items:center;gap:var(--s-1)}
 .ring,.dot{display:inline-block;width:.618em;height:.618em;border-radius:50%;flex:none}
 .ring{border:max(1.5px,.09em) solid var(--slate)}
-.dot{background:var(--red)}
+.dot{background:var(--red);border-radius:0;width:.72em;height:.72em;-webkit-mask:var(--kreuz) center/contain no-repeat;mask:var(--kreuz) center/contain no-repeat}
 .lead{margin:0 0 var(--s-4);max-width:38em;font-size:var(--fs-h6);line-height:1.5}
 form{max-width:38em}
 label{display:block;font-size:.9rem;color:var(--slate);margin-bottom:.3rem}
 .row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--s-2) var(--s-3)}
-.input{flex:1 1 16rem;display:flex;align-items:center;border-bottom:1.5px solid var(--line);transition:border-color .2s}
+.input{flex:1 1 16rem;display:flex;align-items:center;border-bottom:1.5px solid var(--slate);transition:border-color .2s}
 .input:focus-within{border-bottom-color:var(--red)}
-.invalid .input{border-bottom-color:var(--error)}
+.invalid .input{border-bottom:2px solid var(--red)}
 input{flex:1;min-width:0;border:0;background:transparent;padding:.55rem 0;font:inherit;font-size:var(--fs-h6);color:var(--ink);border-radius:0}
 input:focus{outline:none}
 .toggle{flex:none;background:none;border:0;padding:.4rem 0 .4rem .8rem;font:inherit;font-size:.9rem;color:var(--slate);cursor:pointer}
 .toggle:hover{color:var(--ink)}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:3rem;padding:.75rem 1.618rem;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--white);font:inherit;font-weight:500;line-height:1.2;cursor:pointer;transition:background .2s,border-color .2s}
-.btn:hover{background:var(--red-ink);border-color:var(--red-ink)}
-.note{margin:var(--s-1) 0 0;min-height:1.618em;font-size:.95rem;color:var(--error)}
-.note.info{color:var(--slate)}
+.btn:hover{background:var(--blue);border-color:var(--blue)}
+.note{margin:var(--s-1) 0 0;min-height:1.618em;font-size:.95rem;font-weight:600;color:var(--ink)}
+.note.info{color:var(--slate);font-weight:400}
 footer{padding-block:var(--s-3);border-top:1px solid var(--line);font-size:var(--fs-small);color:var(--slate)}
 @media (max-width:760px){.phi{grid-template-columns:1fr}.legend{order:2}.btn{width:100%}}
 @media (prefers-reduced-motion:reduce){h1 .line>span,.brand-dot{animation:none;transform:none}}
@@ -237,7 +238,7 @@ footer{padding-block:var(--s-3);border-top:1px solid var(--line);font-size:var(-
 </head>
 <body>
 <header class="wrap bar">
-  <img class="logo" src="/img/covendos-logo.svg" width="128" height="82" alt="Covendos Healthcare Group">
+  <img class="logo" src="/img/healthklick-logo.svg" width="626" height="70" alt="HEALTHKLICK">
   <nav class="lang" aria-label="${esc(t.langLabel)}">
     <a href="/" hreflang="de" lang="de"${lang === 'de' ? ' aria-current="page"' : ''}>DE</a>
     <a href="/en/" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="page"' : ''}>EN</a>
