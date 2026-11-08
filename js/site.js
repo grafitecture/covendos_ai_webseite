@@ -93,9 +93,9 @@ $$('.view a[href="#"], #brand a[href="#"]').forEach(a => a.addEventListener('cli
 route();
 
 /* =========================================================
-   Logo-Intro (alle Geräte): Das Logo steht beim Öffnen der Startseite in
-   voller Inhaltsbreite und tief über der Headline (Klasse .intro, gesetzt
-   im <head>). Beim Scrollen wird es stufenlos kleiner und wandert an
+   Logo-Intro (alle Geräte): Das Logo steht beim Öffnen der Startseite
+   anderthalbmal so groß wie im Header und tiefer, direkt über der Zeile
+   „Human-led AI …“ (Klasse .intro, gesetzt im <head>). Beim Scrollen wird es stufenlos kleiner und wandert an
    seinen Platz im Header; zurück nach oben wird es wieder groß.
    ========================================================= */
 (function logoIntro(){
