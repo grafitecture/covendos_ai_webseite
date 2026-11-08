@@ -139,18 +139,23 @@ main{padding-top:var(--header-h)}
 @keyframes pop{to{transform:scale(1)}}
 
 /* Logo-Intro (nur Tablet und mobil, bis 1200 px): Beim Öffnen der Startseite
-   steht das Logo rund doppelt so groß über der Headline und gleitet dann in
-   den Header. Auf dem Desktop gibt es kein Intro, das Logo steht wie immer
-   im Header. Klasse .intro setzt ein kleines Script im <head>, den Ablauf
-   steuert js/site.js. Ohne .intro ist .hero-logo unsichtbar. */
+   steht das Logo groß und tief über der Headline. Beim Scrollen wird es
+   stufenlos kleiner und wandert an seinen Platz im Header (.intro-end).
+   Auf dem Desktop gibt es kein Intro, das Logo steht wie immer im Header.
+   Klasse .intro setzt ein kleines Script im <head>, den Ablauf steuert
+   js/site.js. .hero-logo ist nur der unsichtbare Platzhalter, sichtbar ist
+   die fixe Kopie .logo-flyer. Ohne .intro ist .hero-logo ausgeblendet. */
 .hero-logo{display:none}
 @keyframes logo-in{from{opacity:0;transform:translateY(1.618rem)}}
 @media (max-width:1200px){
-  .intro .hero-logo{display:block;width:min(85%, 26rem);height:auto;margin-bottom:var(--s-4);animation:logo-in .9s var(--ease) both}
+  .intro .hero-logo{display:block;visibility:hidden;width:min(100%, 40rem);height:auto;margin:clamp(1.618rem, 11vh, 7rem) 0 var(--s-4)}
   .intro .site-header .logo img{visibility:hidden}
 }
-.intro-fly .site-header .logo img{visibility:hidden}
-.logo-flyer{position:fixed;z-index:60;margin:0;transform-origin:0 0;pointer-events:none;will-change:transform}
+.intro-end .site-header .logo img,
+.intro:has(.nav.open) .site-header .logo img{visibility:visible}
+.logo-flyer{position:fixed;z-index:60;margin:0;height:auto;pointer-events:none;animation:logo-in .9s var(--ease) both}
+.intro-end .logo-flyer,
+.intro:has(.nav.open) .logo-flyer{visibility:hidden}
 
 .hero-foot{margin-top:clamp(2.618rem,5vw,6.854rem);align-items:end}
 .hero-foot .legend{font-size:var(--fs-h6)}

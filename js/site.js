@@ -94,9 +94,10 @@ route();
 
 /* =========================================================
    Logo-Intro (nur Tablet und mobil, bis 1200 px): Das Logo steht beim
-   Öffnen groß über der Headline (Klasse .intro, gesetzt im <head>) und
-   gleitet dann an seinen Platz im Header. Desktop: kein Intro.
-   Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort.
+   Öffnen der Startseite groß und tief über der Headline (Klasse .intro,
+   gesetzt im <head>). Beim Scrollen wird es stufenlos kleiner und wandert
+   an seinen Platz im Header; zurück nach oben wird es wieder groß.
+   Desktop: kein Intro.
    ========================================================= */
 (function logoIntro(){
   const root = document.documentElement;
@@ -105,58 +106,31 @@ route();
   const big = $('.hero-logo'), small = $('.site-header .logo img');
   if (!big || !small || location.hash.length > 1 || window.scrollY > 40) { root.classList.remove('intro'); return; }
 
-  const HOLD = 2600, DUR = 1100;            // Standzeit ab Seitenstart, Dauer des Gleitens (ms)
-  const EASE = 'cubic-bezier(.65,0,.35,1)'; // gleich wie inOut() unten
-  const inOut = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
-  const TRIGGERS = ['wheel', 'touchstart', 'pointerdown', 'keydown', 'scroll', 'hashchange'];
-  let started = false;
+  // Flieger: fixe Kopie des Logos über der Seite. .hero-logo bleibt als
+  // unsichtbarer Platzhalter im Hero und hält dort den Platz frei.
+  const fly = big.cloneNode();
+  fly.className = 'logo-flyer';
+  document.body.appendChild(fly);
 
-  function slide(){
-    if (started) return; started = true;
-    clearTimeout(timer);
-    TRIGGERS.forEach(ev => window.removeEventListener(ev, slide, true));
+  const mix = (a, b, p) => a + (b - a) * p;
+  let raf = 0, until = 0;
 
-    // Ausgangslage merken: großes Logo und die Seite, die nach oben mitgleitet
-    const from = big.getBoundingClientRect();
-    const opacity = getComputedStyle(big).opacity;
-    // Fenster inzwischen breiter als 1200 px (großes Logo ausgeblendet): einfach beenden
-    if (!from.width) { root.classList.remove('intro'); return; }
-    const page = $('#site'), ref = $('.hero-kicker');
-    const before = ref.getBoundingClientRect().top;
-
-    // Flieger: Kopie des großen Logos, fix positioniert, wird auf das Header-Logo verkleinert
-    const fly = big.cloneNode();
-    fly.className = 'logo-flyer';
-    Object.assign(fly.style, { left: from.left + 'px', top: from.top + 'px', width: from.width + 'px', height: from.height + 'px', opacity });
-    document.body.appendChild(fly);
-
-    // Endlage herstellen, dann die Seite per FLIP von der alten Lage aus hochgleiten lassen
-    root.classList.add('intro-fly');
-    root.classList.remove('intro');
-    const dy = before - ref.getBoundingClientRect().top;
-    page.style.transition = 'none';
-    page.style.transform = `translateY(${dy}px)`;
-    page.getBoundingClientRect();
-    page.style.transition = `transform ${DUR}ms ${EASE}`;
-    page.style.transform = '';
-    setTimeout(() => { page.style.transition = ''; }, DUR + 50);
-
-    // Flieger folgt dem Header-Logo Bild für Bild (das Ziel kann sich beim Scrollen verkleinern)
-    const t0 = performance.now();
-    (function frame(now){
-      const t = Math.min(1, (now - t0) / DUR), e = inOut(t);
-      const to = small.getBoundingClientRect();
-      const x = (to.left - from.left) * e, y = (to.top - from.top) * e;
-      const s = (from.width + (to.width - from.width) * e) / from.width;
-      fly.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
-      fly.style.opacity = +opacity + (1 - opacity) * e;
-      if (t < 1) requestAnimationFrame(frame);
-      else { root.classList.remove('intro-fly'); fly.remove(); }
-    })(t0);
+  function update(now){
+    raf = 0;
+    const a = big.getBoundingClientRect();   // Startpunkt (scrollt mit der Seite)
+    const b = small.getBoundingClientRect(); // Endpunkt im Header
+    // Platzhalter unsichtbar (andere Ansicht oder breiter als 1200 px): Header-Logo zeigen
+    // Scrollweg bis zum Endpunkt: bis der Platzhalter die Höhe des Header-Logos erreicht
+    const way = a.top + window.scrollY - b.top;
+    const p = a.width && way > 0 ? Math.min(1, Math.max(0, window.scrollY / way)) : 1;
+    root.classList.toggle('intro-end', p >= 1);
+    if (p < 1) Object.assign(fly.style, { left: mix(a.left, b.left, p) + 'px', top: mix(a.top, b.top, p) + 'px', width: mix(a.width, b.width, p) + 'px' });
+    // Das Header-Logo ändert nach dem Scrollen noch kurz seine Größe: so lange mitlaufen
+    if (now < until) raf = requestAnimationFrame(update);
   }
-
-  const timer = setTimeout(slide, Math.max(700, HOLD - performance.now()));
-  TRIGGERS.forEach(ev => window.addEventListener(ev, slide, { capture: true, passive: true }));
+  function schedule(){ until = performance.now() + 450; if (!raf) raf = requestAnimationFrame(update); }
+  ['scroll', 'resize', 'hashchange', 'load'].forEach(ev => window.addEventListener(ev, schedule, { passive: true }));
+  update(performance.now());
 })();
 
 /* Rx / OTC */
