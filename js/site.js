@@ -93,11 +93,10 @@ $$('.view a[href="#"], #brand a[href="#"]').forEach(a => a.addEventListener('cli
 route();
 
 /* =========================================================
-   Logo-Intro (nur Tablet und mobil, bis 1200 px): Das Logo steht beim
-   Öffnen der Startseite groß und tief über der Headline (Klasse .intro,
-   gesetzt im <head>). Beim Scrollen wird es stufenlos kleiner und wandert
-   an seinen Platz im Header; zurück nach oben wird es wieder groß.
-   Desktop: kein Intro.
+   Logo-Intro (alle Geräte): Das Logo steht beim Öffnen der Startseite in
+   voller Inhaltsbreite und tief über der Headline (Klasse .intro, gesetzt
+   im <head>). Beim Scrollen wird es stufenlos kleiner und wandert an
+   seinen Platz im Header; zurück nach oben wird es wieder groß.
    ========================================================= */
 (function logoIntro(){
   const root = document.documentElement;
@@ -113,18 +112,21 @@ route();
   document.body.appendChild(fly);
 
   const mix = (a, b, p) => a + (b - a) * p;
+  // Größe läuft der Bewegung voraus, damit das Logo schon klein ist, wenn es
+  // den Header erreicht (sonst würde es die Navigation überdecken)
+  const shrink = p => 1 - Math.pow(1 - p, 3);
   let raf = 0, until = 0;
 
   function update(now){
     raf = 0;
     const a = big.getBoundingClientRect();   // Startpunkt (scrollt mit der Seite)
     const b = small.getBoundingClientRect(); // Endpunkt im Header
-    // Platzhalter unsichtbar (andere Ansicht oder breiter als 1200 px): Header-Logo zeigen
-    // Scrollweg bis zum Endpunkt: bis der Platzhalter die Höhe des Header-Logos erreicht
-    const way = a.top + window.scrollY - b.top;
+    // Platzhalter unsichtbar (andere Ansicht): Header-Logo zeigen
+    // Scrollweg bis zum Endpunkt: bis die Unterkante des Platzhalters die des Header-Logos erreicht
+    const way = a.bottom + window.scrollY - b.bottom;
     const p = a.width && way > 0 ? Math.min(1, Math.max(0, window.scrollY / way)) : 1;
     root.classList.toggle('intro-end', p >= 1);
-    if (p < 1) Object.assign(fly.style, { left: mix(a.left, b.left, p) + 'px', top: mix(a.top, b.top, p) + 'px', width: mix(a.width, b.width, p) + 'px' });
+    if (p < 1) Object.assign(fly.style, { left: mix(a.left, b.left, p) + 'px', top: mix(a.top, b.top, p) + 'px', width: mix(a.width, b.width, shrink(p)) + 'px' });
     // Das Header-Logo ändert nach dem Scrollen noch kurz seine Größe: so lange mitlaufen
     if (now < until) raf = requestAnimationFrame(update);
   }
