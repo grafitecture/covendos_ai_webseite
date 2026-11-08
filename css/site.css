@@ -218,7 +218,7 @@ main{padding-top:var(--header-h)}
 /* ---------------- Lebenszyklus ---------------- */
 .cycle-fig{margin:0;position:sticky;top:6rem;align-self:start}
 .cycle-fig img{width:100%;aspect-ratio:4/5;object-fit:cover}
-@media (max-width:900px){.cycle-fig{position:static}.cycle-fig img{aspect-ratio:3/2}}
+@media (max-width:900px){.cycle-fig{position:static}.cycle-fig img{aspect-ratio:3/2;object-position:50% 32%}}
 .phases{list-style:none;margin:var(--s-5) 0 0;padding:0;counter-reset:ph}
 .phase{display:grid;grid-template-columns:minmax(3rem,auto) 1fr;column-gap:var(--s-3);padding-block:var(--s-4);border-top:1px solid var(--line)}
 .phase .num{font-size:var(--fs-h4);font-weight:300;color:var(--slate);line-height:1.12}
