@@ -63,6 +63,7 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Typo-Skala im Goldenen Schnitt (h1 17.942rem … small 0.618rem), fluid per `clamp()`
 - Zeichensystem: Kreis = Mensch, rotes Kreuz aus dem Logo = Agent (CSS-Maske `--kreuz` in `css/site.css`, im PDF `pdfKreuz()` in `js/site.js`). Das Kreuz steht auch als Schlusszeichen im Claim
 - Mobiles Menü bis 1200 px Breite (wegen Sprachumschalter im Header)
+- Seitlich festgestellt: `html{overflow-x:hidden}` und `body{overflow-x:clip}` verhindern, dass die Seite auf dem Handy beim Scrollen nach links und rechts wackelt (sticky bleibt intakt). Trotzdem nichts breiter als den Bildschirm bauen, sonst wird es abgeschnitten. E-Mail-Adressen brechen um (`overflow-wrap:anywhere` für `mailto:`-Links, im Linktext `<wbr>` nach dem @); neue Adressen genauso einfügen
 - Logo-Intro (nur Tablet und mobil, bis 1200 px): Beim Öffnen der Startseite steht das Logo rund doppelt so groß über der Headline und gleitet nach rund 2,6 s an seinen Platz im Header; die Seite gleitet mit. Auf dem Desktop (ab 1201 px) gibt es bewusst kein Intro, das Logo steht wie immer im Header. Scrollen, Tippen, Klicken oder eine Taste starten das Gleiten sofort. Kein Intro bei Sprungmarken (`#kontakt` usw.), beim Sprachwechsel und bei „Bewegung reduzieren“. Bausteine: kleines Script im `<head>` und `<img class="hero-logo">` im Hero (beide Sprachen), CSS-Block „Logo-Intro“ in `css/site.css`, Funktion `logoIntro()` in `js/site.js` (Standzeit `HOLD`, Dauer `DUR`)
 
 ## Passwortschutz (Vorschau)
