@@ -62,7 +62,7 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Schrift: Corporate S (lokal installiert, falls lizenziert), sonst Source Sans 3
 - Typo-Skala im Goldenen Schnitt (h1 17.942rem … small 0.618rem), fluid per `clamp()`
 - Zeichensystem: Kreis = Mensch, rotes Kreuz aus dem Logo = Agent (CSS-Maske `--kreuz` in `css/site.css`, im PDF `pdfKreuz()` in `js/site.js`). Das Kreuz steht auch als Schlusszeichen im Claim
-- Mobiles Menü bis 1200 px Breite (wegen Sprachumschalter im Header)
+- Mobiles Menü bis 1200 px Breite (wegen Sprachumschalter im Header). Knopf: drei Linien in Logo-Rot (#FB3640, Strichstärke wie im Logo), offen werden sie zum Kreuz; Bildschirmleser lesen „Menü“ / „Menu“
 - Logo-Intro (alle Geräte): Beim Öffnen der Startseite steht das Logo anderthalbmal so groß wie im Header und mit Abstand nach oben direkt über der Zeile „Human-led AI …“. Beim Scrollen wird es stufenlos kleiner und wandert an seinen Platz im Header; der Endpunkt ist erreicht, sobald die Unterkante des großen Logos die des Header-Logos erreicht. Die Größe läuft der Bewegung voraus, damit das Logo die Navigation nie überdeckt. Zurück nach oben wird es wieder groß. Kein Intro bei Sprungmarken (`#kontakt` usw.), beim Sprachwechsel und bei „Bewegung reduzieren“. Bausteine: kleines Script im `<head>` und `<img class="hero-logo">` im Hero (beide Sprachen, unsichtbarer Platzhalter), CSS-Block „Logo-Intro“ in `css/site.css` (Größe als Vielfaches von `--logo-big` und Abstand nach oben bei `.intro .hero-logo`), Funktion `logoIntro()` in `js/site.js`
 
 ## Passwortschutz (Vorschau)
