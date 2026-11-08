@@ -1,4 +1,4 @@
-# covendos.ai – Apache-Konfiguration für den Managed Server (comvos)
+# HEALTHKLICK – Apache-Konfiguration (nur als Ausweichlösung; ausgeliefert wird über Vercel)
 
 # HTTPS erzwingen
 <IfModule mod_rewrite.c>
