@@ -87,8 +87,9 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 
 ## FAQ
 
-- Ansicht `#faq` in beiden Sprachen, 26 Fragen in sechs Gruppen, Antworten als `<details>` (Kreuz dreht sich beim Öffnen zum ×)
-- Quellen nummeriert am Ende der Ansicht (`#faq-q1` …), Hinweise im Text als hochgestellte Zahl. Stand November 2026; Zahlen und Rechtsstand vor dem Livegang prüfen
+- Ansicht `#faq` in beiden Sprachen, 36 Fragen in sechs Gruppen (davon 13 in „Healthklick Field Force und Arbeitnehmerüberlassung“), Antworten als `<details>` (Kreuz dreht sich beim Öffnen zum ×)
+- Quellen nummeriert am Ende der Ansicht (`#faq-q1` bis `#faq-q21`; `js/site.js` kennt Sprungmarken bis 30), Hinweise im Text als hochgestellte Zahl. Stand November 2026; Zahlen und Rechtsstand vor dem Livegang prüfen
+- AÜG-Zahlen mit Ablaufdatum: Lohnuntergrenze 15,33 €/h bis 31.03.2027, danach 15,87 €/h; die Siebte Verordnung (Quelle 17) gilt nur bis 30.09.2027, dann Nachfolgeverordnung und Tarifwerk DGB/GVP prüfen
 - Inhalte stehen direkt in `index.html` bzw. `en/index.html`
 
 ## Vor dem Livegang offen
