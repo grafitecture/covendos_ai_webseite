@@ -135,7 +135,7 @@ const SITE = (() => {
     },
     pdfFooter:'HEALTHKLICK  |  Ein Angebot der Grafitecture GmbH  |  Mehr Zeit für Medizin',
     brief:{
-      greet:'Guten Tag,', intro:'ich interessiere mich für ein Gespräch mit Healthklick.',
+      greet:'Guten Tag,', intro:'ich interessiere mich für ein Gespräch mit Healthklick.', source:'Gefunden über: ',
       topicsH:'Themen:', noTopics:'noch keine ausgewählt', contextH:'Kontext:',
       market:'Markt', area:'Indikationsgebiet', phase:'Phase im Lebenszyklus', time:'Zeitrahmen', open:'offen',
       msgH:'Nachricht:', bye:'Viele Grüße', namePh:'[Name]',
@@ -178,14 +178,185 @@ const SITE = (() => {
       thanks:(n,t) => `Danke, ${n}. „${t}“ ist bereit.`, read:'Hier lesen', readClose:'Lesen schließen',
       errFirst:'Bitte Vornamen angeben.', errLast:'Bitte Nachnamen angeben.',
       errMail:'Bitte eine gültige E-Mail-Adresse angeben.', errCompany:'Bitte Unternehmen angeben.',
+      talkSubj:t => `Gespräch zum Whitepaper „${t}“`,
+      talkBody:(r,t) => `Guten Tag Herr Wendt,\n\nich habe das Healthklick-Whitepaper „${t}“ gelesen und möchte gern über das Thema sprechen.\n\nName: ${r.first} ${r.last}\nUnternehmen: ${r.company}\nFunktion: ${r.fn || '–'}\nE-Mail: ${r.mail}\nNeue Whitepaper per E-Mail: ${r.news ? 'ja' : 'nein'}\n\nMit freundlichen Grüßen\n${r.first} ${r.last}`,
       file:id => `healthklick-whitepaper-${id}.pdf`, what:'Das Whitepaper', alt:'„Hier lesen“'
     }
   };
 
+  /* Marketing-Material zur Freigabe (Bereich unter dem Footer, js/marketing.js) */
+  const mk = {
+    kicker:'Marketing-Material zur Freigabe · Stand 9. November 2026',
+    title:'Marketing',
+    lead:'Eine Kampagne aus einem Guss: Social Media, Print, Rechnungswesen, Give-aways und Präsentation. Ziel ist jeder qualifizierte Kontakt, und alle Anfragen aus der Kampagne gehen direkt an Gunter Wendt.',
+    langNote:'',
+    facts:[['1','Ansprechpartner für alle Leads'],['18','Beiträge in acht Wochen auf drei Kanälen'],['10','Drucksachen und Vorlagen'],['3','Give-aways'],['1','interaktive Präsentation']],
+    navLabel:'Marketing-Material',
+    nav:{social:'Social Media', print:'Print', invoice:'Rechnungswesen', give:'Give-aways', deck:'Präsentation', ok:'Freigabe'},
+    flowH:'So kommt jeder Lead bei Gunter Wendt an',
+    flow:[['Kanal','LinkedIn, Instagram, Facebook, QR-Codes auf Drucksachen, Präsentation'],['Website','Kontaktformular oder Whitepaper. Jeder Kanal hat einen eigenen Link mit Quelle, zum Beispiel ?quelle=linkedin'],['E-Mail','Vorbereitete Anfrage mit Themen und Quelle an gunter.wendt@covendos.com'],['Gespräch','Antwort innerhalb eines Werktags, vorbereitet vom Briefing-Agenten']],
+    flowNote:'Die Quelle steht in der Anfrage, ganz ohne Tracking-Cookies. Damit Anfragen ohne Umweg über das E-Mail-Programm ankommen, braucht es noch einen Mail-Dienst (siehe Freigabe).',
+    ui:{prev:'Zurück', next:'Weiter', pending:'Musterbild folgt', aiTag:'KI-Musterbild', close:'Schließen', zoom:'Vergrößern'},
+    social:{
+      num:'01', h:'Social Media',
+      lead:'LinkedIn bringt die Leads, Instagram und Facebook die Menschen. Die Kommunikation baut auf dem auf, was Healthklick ausmacht: Fachwissen zu Markt, Recht und Lebenszyklus, sichtbare Verantwortung und ein Team, das man kennenlernen möchte.',
+      channelsH:'Welche Kanäle wir bespielen',
+      labels:{role:'Rolle', who:'Zielgruppe', formats:'Formate', rhythm:'Rhythmus', goal:'Ziel'},
+      channels:[
+        {id:'li', short:'in', name:'LinkedIn', badge:'Hauptkanal', main:true, role:'Lead-Kanal und Fachstimme', who:'Brand Manager, Sales Excellence, Market Access, Medical Affairs und Geschäftsführung bei Pharma- und Biotechunternehmen', formats:'Zahlen-Posts, Dokument-Karussells, Whitepaper mit Lead-Formular, Newsletter „Healthklick Briefing“, Beiträge von Gunter Wendt als persönliche Stimme', rhythm:'3 Beiträge pro Woche auf der Unternehmensseite, 1 bis 2 von Gunter Wendt', goal:'Gesprächsanfragen und Whitepaper-Registrierungen', fact:'80 % der B2B-Leads aus sozialen Netzwerken kommen über LinkedIn.', src:7},
+        {id:'ig', short:'◎', name:'Instagram', badge:'Arbeitgebermarke', role:'Gesicht des Teams', who:'Pharmareferent:innen, PTA, Naturwissenschaftler:innen, Innendienst und Call-Agents', formats:'Reels aus dem Alltag, Karussells zur Field Force, Team-Momente, Stories mit Fragen und Antworten', rhythm:'2 bis 3 Beiträge pro Woche, Stories nach Anlass', goal:'Bewerbungen und Bekanntheit', fact:'Meistgenutzte Plattform in Deutschland: 40 % Wochenreichweite ab 14 Jahren.', src:5},
+        {id:'fb', short:'f', name:'Facebook', badge:'Recruiting in der Fläche', role:'Stellen und Team in den Regionen', who:'Erfahrene Außendienstler:innen und regionale Netzwerke', formats:'Stellen mit Region, Team-Momente, Veranstaltungen', rhythm:'2 Beiträge pro Woche, Stellenanzeigen gezielt nach Region', goal:'Bewerbungen für konkrete Gebiete', fact:'31 % Wochenreichweite in Deutschland.', src:5},
+        {id:'yt', short:'▶', name:'YouTube', badge:'Empfehlung ab Q1 2027', role:'Erklären und gefunden werden', who:'Alle Zielgruppen, über die Suche', formats:'Erklärvideos von 2 bis 4 Minuten, Webinar-Aufzeichnungen', rhythm:'1 Video pro Monat', goal:'Auffindbarkeit und Material für den Vertrieb', fact:'Erreicht 72 % der Menschen ab 14 Jahren.', src:5},
+        {id:'xi', short:'X', name:'Xing', badge:'Nur Stellenanzeigen', role:'Jobbörse, kein eigener Content', who:'Bewerberinnen und Bewerber im deutschsprachigen Raum', formats:'Stellenanzeigen', rhythm:'Bei Bedarf', goal:'Zusätzliche Bewerbungen', fact:'15 % der Menschen in Deutschland nutzen LinkedIn, 8 % Xing.', src:6}
+      ],
+      notH:'Bewusst nicht:', not:'TikTok und X. Die Zielgruppe ist dort kaum beruflich unterwegs, und Kommentare lassen sich schwer verantwortungsvoll begleiten.',
+      rulesH:'Spielregeln',
+      rules:[
+        ['Keine Produktwerbung.','In öffentlichen Kanälen keine Werbung für verschreibungspflichtige Arzneimittel (§ 10 HWG) und keine Präparate von Kunden. Healthklick spricht über Leistungen, Markt und Recht.'],
+        ['Nebenwirkungen ernst nehmen.','Erwähnt jemand in Kommentaren oder Nachrichten eine Nebenwirkung, markiert der Vigilanz-Agent den Beitrag. Eine Fachperson prüft ihn und leitet ihn an den jeweiligen Hersteller weiter.'],
+        ['Echte Menschen, echte Fotos.','Die Team-Bilder hier sind KI-Musterbilder für die Freigabe. In den Kanälen erscheinen nur echte Fotos, mit Einwilligung der Abgebildeten. KI-erzeugte Bilder werden gekennzeichnet (Art. 50 KI-Verordnung).'],
+        ['Datenschutz.','Die Datenschutzerklärung bekommt einen Abschnitt zu den Social-Media-Seiten: Für die Seitenstatistiken sind Healthklick und die Plattform gemeinsam verantwortlich (EuGH, C-210/16).'],
+        ['Vier Augen.','Jeder Beitrag mit Rechts- oder Marktbezug geht vor der Veröffentlichung durch den Compliance-Agenten und eine verantwortliche Person.'],
+        ['Jeder Link mit Quelle.','Links aus den Kanälen tragen ?quelle=linkedin, ?quelle=instagram oder ?quelle=facebook. Die Quelle steht dann in der Anfrage an Gunter Wendt.']
+      ],
+      tabletH:'So sehen die Kanäle aus',
+      tabletNote:'Beispielansicht auf dem Tablet, Stand nach acht Wochen. Follower und Reaktionen sind Beispielwerte. Bei Instagram Beiträge antippen, Karussells mit den Pfeilen blättern.',
+      planH:'Redaktionsplan', planLead:'18 Beiträge von KW 47/2026 bis KW 2/2027. Zeile aufklappen für Text und Bild.',
+      mixH:'Mischung der Beiträge', kw:'KW', draftGW:'Entwurf für Gunter Wendt, zur Freigabe durch ihn', textOnly:'Textbeitrag ohne Bild', showInTablet:'Im Tablet zeigen'
+    },
+    print:{
+      num:'02', h:'Print',
+      lead:'Klassisch gedruckt, digital gedacht. Alles auf einem Raster, in den fünf Markenfarben, mit Gunter Wendt als Absender. Antippen zum Vergrößern.',
+      items:{
+        letter:['Briefbogen','DIN A4 nach DIN 5008, Form B · 100 g/m² Recyclingpapier, FSC · als Word-Vorlage und im Digitaldruck'],
+        card:['Visitenkarte, Vorderseite','85 × 55 mm · 400 g/m² Naturkarton · Logo-Rot als Sonderfarbe'],
+        cardBack:['Visitenkarte, Rückseite','Imperial Blue vollflächig · QR-Code mit Kontaktdaten (vCard)'],
+        compl:['Komplimentkarte','DIN lang, 210 × 99 mm · 300 g/m² · für Unterlagen und Muster'],
+        env:['Umschlag','DIN lang mit Fenster · passend zum Briefbogen'],
+        broCover:['Imagebroschüre, Titel','DIN A4 hoch · 16 Seiten · Rückstichheftung'],
+        broSpread:['Doppelseite „Was wir tun“','Leistungen, Bild und Kundenstimme'],
+        broBack:['Rückseite','Kontakt und QR-Code zum Gesprächstermin'],
+        wp:['Whitepaper','DIN A4 · digital als PDF, gedruckt in kleiner Auflage'],
+        wpSpread:['Whitepaper, Innenseiten','Zweispaltiger Text, eine große Zahl, Tandem-Grafik'],
+        folder:['Präsentationsmappe','DIN A4 · 350 g/m² · Tasche mit Visitenkartenschlitz'],
+        rollup:['Roll-up','85 × 200 cm · für Kongresse und Veranstaltungen'],
+        qrcard:['QR-Karte für Praxen','DIN A6 · Vorlage für Begleitprogramme von Kunden'],
+        sig:['E-Mail-Signatur','Die meistgelesene Drucksache ist digital · mit den Pflichtangaben nach § 35a GmbHG']
+      },
+      broH:'Imagebroschüre', wpH:'Whitepaper', moreH:'Was heute noch dazugehört',
+      needH:'Was man heute noch druckt',
+      needLead:'Gedruckt wird, was man in die Hand gibt oder aufstellt. Alles andere ist digital und wird bei Bedarf gedruckt. Auflagen klein halten, nachdrucken ist günstig.',
+      specHead:['Drucksache','Format','Material','Auflage zum Start'],
+      specs:[
+        ['Visitenkarte','85 × 55 mm','400 g/m² Naturkarton, Rückseite Imperial Blue','250 je Person'],
+        ['Komplimentkarte','DIN lang','300 g/m²','250'],
+        ['Briefbogen','DIN A4','100 g/m² Recyclingpapier, FSC','500, dazu Word-Vorlage'],
+        ['Umschlag','DIN lang mit Fenster','100 g/m²','500'],
+        ['Imagebroschüre','DIN A4, 16 Seiten','Umschlag 250 g/m², Inhalt 150 g/m²','300'],
+        ['Whitepaper','DIN A4','Digitaldruck','je 50, sonst PDF'],
+        ['Präsentationsmappe','DIN A4','350 g/m²','250'],
+        ['Roll-up','85 × 200 cm','Bannerstoff mit Kassette','2'],
+        ['QR-Karte für Praxen','DIN A6','300 g/m²','1.000 je Programm']
+      ],
+      dropH:'Was es nicht mehr braucht',
+      drop:[
+        ['Faxvorlage und Faxnummer.','Die Kommunikation läuft per E-Mail, Telefon und Video.'],
+        ['Briefbogen in Großauflage.','Briefe entstehen am Rechner. Gedruckt wird nur für Originale und Verträge.'],
+        ['Gedruckter Leistungskatalog.','Website und Imagebroschüre als PDF sind aktueller.'],
+        ['Werbekugelschreiber für Arztpraxen.','Der FSA-Kodex verbietet Geschenke an Fachkreise seit 2014 grundsätzlich.']
+      ],
+      crossH:'Hinweis zum Kreuz',
+      cross:'Das rote Kreuz auf weißem Grund und Zeichen, die ihm zum Verwechseln ähnlich sind, sind gesetzlich geschützt (§ 125 OWiG, DRK-Gesetz). In den Drucksachen steht das Kreuz deshalb als Teil der Wortmarke, im Claim oder auf Imperial Blue, nie allein und groß auf Weiß. Vor dem Druck sollte eine Markenanwältin oder ein Markenanwalt Logo und Zeichen prüfen.'
+    },
+    invoice:{
+      num:'03', h:'Rechnungswesen',
+      lead:'Die Rechnung gehört zur Marke: gleicher Briefbogen, klare Tabelle, alle Pflichtangaben. Ab 2027 kommt sie als E-Rechnung. Alle Daten auf diesem Muster sind fiktiv.',
+      dutyH:'Pflichtangaben, im Muster markiert',
+      duties:[
+        'Name und Anschrift des leistenden Unternehmens',
+        'Name und Anschrift des Leistungsempfängers',
+        'Rechnungsnummer, Ausstellungsdatum und Umsatzsteuer-Identifikationsnummer',
+        'Menge und Art der Leistung',
+        'Zeitpunkt der Leistung, hier der Leistungszeitraum',
+        'Entgelt, nach Steuersätzen aufgeschlüsselt',
+        'Steuersatz und Steuerbetrag',
+        'Angaben der GmbH im Geschäftsbrief: Sitz, Registergericht, Handelsregisternummer, Geschäftsführer (§ 35a GmbHG)'
+      ],
+      eH:'E-Rechnung ab 2027',
+      e:'Seit 2025 müssen alle Unternehmen E-Rechnungen empfangen können. Ab 1. Januar 2027 müssen Unternehmen mit mehr als 800.000 Euro Vorjahresumsatz sie auch ausstellen, ab 2028 alle. Das Layout bleibt: Im ZUGFeRD-Format steckt die strukturierte Rechnung als XML im PDF.',
+      xmlBtn:'Strukturierte Daten zeigen', xmlHide:'Strukturierte Daten ausblenden',
+      note:'Pflichtangaben nach § 14 Abs. 4 UStG. Kunde, Auftrag, Beträge und Bankverbindung sind Muster; die Bankverbindung ist die übliche Beispiel-IBAN aus Dokumentationen.',
+      figH:'Rechnung', figMeta:'DIN A4 · gleicher Briefbogen · Pflichtangaben markiert'
+    },
+    give:{
+      num:'04', h:'Give-aways',
+      lead:'Drei Dinge, die bleiben. Eines ist ein Klassiker mit eigenem Namen, zwei sind neu und übersetzen die Marke in etwas zum Anfassen: Zeit und Klick.',
+      items:[
+        {tag:'Give-away 1 · Klassiker', name:'Ideenbuch', idea:'Ein Notizbuch im A5-Format mit weißen, leeren Seiten. Für Workshops, Kundentermine und die eigenen Gedanken dazwischen. Leer, weil gute Ideen keine Linien brauchen.',
+         specs:[['Format','A5, 148 × 210 mm, Hardcover mit runden Ecken'],['Inhalt','192 Seiten blanko, 100 g/m², Fadenheftung'],['Einband','Leinen in Imperial Blue, Prägung „Ideenbuch“ in Weiß, Wortmarke in Rot'],['Details','Gummiband und Lesebändchen in Logo-Rot, Innentasche, erste Seite „Dieses Ideenbuch gehört …“'],['Für','Kunden, Partner, Bewerber:innen, Team']],
+         imgs:['ideenbuch.svg','ideenbuch-offen.svg'], alts:['Ideenbuch, geschlossen: Leineneinband in Imperial Blue mit Prägung und rotem Gummiband','Ideenbuch, aufgeschlagen: leere weiße Seiten und rotes Lesebändchen'], views:['Geschlossen','Aufgeschlagen']},
+        {tag:'Give-away 2 · neu', name:'Drei Minuten', idea:'Eine Sanduhr für den Schreibtisch, die genau drei Minuten läuft: der Claim „Mehr Zeit für Medizin“ zum Anfassen. In Workshops bekommt jede Idee drei Minuten, im Alltag erinnert sie daran, wofür wir arbeiten.',
+         specs:[['Maße','ca. 6 × 6 × 14 cm'],['Material','Glas, Sand in Logo-Rot, Gestell aus Aluminium in Imperial Blue'],['Veredelung','Gravur im Sockel: „Drei Minuten mehr.“ und Wortmarke'],['Laufzeit','3 Minuten'],['Für','Kunden-Workshops, Pitch-Termine, Team']],
+         imgs:['sanduhr.svg'], alts:['Sanduhr mit rotem Sand und Gestell in Imperial Blue'], views:[]},
+        {tag:'Give-away 3 · neu', name:'Der Klick', idea:'Ein Handzähler aus Metall mit roter Taste. Das Wortspiel steckt im Namen, die Botschaft auf der Rückseite: „Jeder Kontakt zählt.“ Für Kongress-Stände, Team-Rituale und alle, die Gespräche zählen statt Zahlen.',
+         specs:[['Maße','ca. 5 × 3,5 cm, vierstelliges Zählwerk'],['Material','Metall, pulverbeschichtet in Imperial Blue, Taste in Logo-Rot'],['Veredelung','Lasergravur „Jeder Kontakt zählt.“, Wortmarke in Weiß'],['Details','Rückstellrad, Schlaufe für den Schlüsselbund'],['Für','Kongresse, Field-Force-Teams, Kunden']],
+         imgs:['klicker.svg'], alts:['Handzähler in Imperial Blue mit roter Taste und Zählwerk'], views:[]}
+      ],
+      ruleH:'Für wen die Give-aways gedacht sind',
+      rule:'Für Kunden, Partner, Bewerberinnen und Bewerber und das eigene Team. Nicht für Ärztinnen, Ärzte und Apotheken im Auftrag eines Pharmaunternehmens: Der FSA-Kodex Fachkreise verbietet Geschenke an Fachkreise seit Juli 2014 grundsätzlich, § 7 HWG setzt enge Grenzen. Das Kreuz erscheint auf den Give-aways nur als Teil der Wortmarke.'
+    },
+    deck:{
+      num:'05', h:'Präsentation',
+      lead:'Eine interaktive Präsentation im Corporate Design, gebaut für einen echten Termin: den Pitch bei einem Pharmaunternehmen. Läuft im Browser, auf dem Tablet und als PDF.',
+      topicH:'Das Thema',
+      topic:'Fiktiver Pitch bei der Auenwald Pharma GmbH am 24. November 2026. Ein mittelständischer Hersteller bringt 2027 ein neues Präparat in der Kardiologie auf den Markt, mit 15,5 % Herstellerabschlag und Erstattungsbetrag ab dem siebten Monat. Healthklick zeigt, wie Menschen und KI-Agenten die ersten zwölf Monate tragen. Unternehmen, Präparat und Modellrechnung sind fiktiv.',
+      slides:['Titel: Die ersten zwölf Monate','Agenda','2027: neue Spielregeln, mit Rechner zum Herstellerabschlag','Wer überhaupt noch erreichbar ist','Das Zeitfenster bis Monat 7','Unser Modell: Menschen führen, Agenten arbeiten zu','Sechs Agenten, sechs Verantwortliche','Kanalmix mit Reichweitenrechner','Fahrplan über zwölf Monate','Compliance von Anfang an','Steuerung: das Launch-Cockpit','So arbeiten wir zusammen','Nächste Schritte','Kontakt'],
+      open:'Präsentation öffnen', pdf:'Als PDF drucken',
+      keys:'Steuerung: Pfeiltasten oder Wischen, O für die Übersicht, F für Vollbild, N für Sprechernotizen.',
+      frameTitle:'Präsentation „Die ersten zwölf Monate“'
+    },
+    ok:{
+      num:'06', h:'Freigabe',
+      lead:'Was vor dem Druck noch offen ist, und wie Ihre Rückmeldung zu uns kommt.',
+      openH:'Offene Punkte',
+      open:[
+        'Funktion von Gunter Wendt bestätigen, sie steht auf allen Drucksachen und in der Signatur.',
+        'Telefonnummer ergänzen: Visitenkarte, Briefbogen, Signatur und Impressum.',
+        'Domain healthklick.de registrieren und mit Vercel verbinden. Die QR-Codes zeigen darauf. Am 9. November 2026 war sie frei, healthklick.com ist vergeben.',
+        'Empfänger der Anfragen rechtlich klären: Das Postfach liegt bei Covendos. Vertrag nach Art. 28 oder Art. 26 DSGVO schließen und die Datenschutzerklärung ergänzen.',
+        'Marke und Zeichen prüfen lassen: Markenrecherche „HEALTHKLICK“ und Abstand zum geschützten Roten Kreuz.',
+        'Echte Team-Fotos für Social Media aufnehmen. Die Bilder hier sind KI-Musterbilder.',
+        'Automatischen Versand der Anfragen einrichten (Mail-Dienst) und danach die Datenschutzerklärung anpassen.'
+      ],
+      formH:'Ihre Rückmeldung',
+      items:['Kanalstrategie und Spielregeln','Redaktionsplan und Beiträge','Visitenkarte, Briefbogen, Komplimentkarte, Umschlag','Imagebroschüre und Whitepaper','Mappe, Roll-up, QR-Karte, E-Mail-Signatur','Rechnungslayout','Give-aways','Präsentation'],
+      yes:'Freigegeben', change:'Änderung',
+      noteL:'Anmerkungen', nameL:'Ihr Name',
+      send:'Rückmeldung per E-Mail senden', sendNote:'Öffnet eine vorbereitete E-Mail an die Agentur Grafitecture. Auf der Website wird nichts gespeichert.',
+      to:'martin.schweppe@grafitecture.de', subject:'Freigabe Marketing-Material Healthklick',
+      mailIntro:'Rückmeldung zum Marketing-Material von Healthklick (Stand 9. November 2026):'
+    },
+    srcH:'Quellen',
+    sources:[
+      ['1 · BMG: Bundestag beschließt GKV-Beitragssatzstabilisierungsgesetz, 10.07.2026','https://www.bundesgesundheitsministerium.de/ministerium/meldungen/bundestag-beschliesst-gkv-beitragssatzstabilisierunggesetz-pm-10-07-2026'],
+      ['2 · Veeva: Expand HCP Access with Connected Engagement (Veeva Pulse, Europa), 04.07.2024','https://www.veeva.com/eu/blog/expand-hcp-access-with-connected-engagement-veeva-pulse-data-europe/'],
+      ['3 · Pharmazeutische Zeitung: Zahl der Apotheken fällt unter 16.500, 14.09.2026','https://www.pharmazeutische-zeitung.de/zahl-der-apotheken-faellt-unter-16500-168310/'],
+      ['4 · NCPE: Erste gemeinsame klinische Bewertung nach der EU-HTA-Verordnung abgeschlossen, 04.05.2026','https://www.ncpe.ie/?p=17810'],
+      ['5 · ARD/ZDF-Medienstudie 2025: Social Media zwischen Wachstum und Sättigung (Media Perspektiven 31/2025)','https://www.media-perspektiven.de/fileadmin/user_upload/media-perspektiven/pdf/2025/MP_31_2025_ARD_ZDF-Medienstudie_Social_Media_zwischen_Wachstum_und_Saettigung_Nutzungsmuster_und_Plattformdynamiken_in_Deutschland.pdf'],
+      ['6 · YouGov, Februar 2026, zitiert nach skill-sprinters.de: Xing vs. LinkedIn 2026','https://skill-sprinters.de/blog/social-media/xing-vs-linkedin-2026/'],
+      ['7 · LinkedIn Marketing Solutions, zitiert nach thunderbit.com: LinkedIn-Statistiken 2026','https://thunderbit.com/de/blog/linkedin-stats'],
+      ['8 · FSA: Neuregelung des Geschenkeverbots im FSA-Kodex Fachkreise','https://www.fsa-pharma.de/wp-content/uploads/2023/05/flyer_geschenkeverbot_web.pdf'],
+      ['9 · § 125 OWiG: Benutzen des Roten Kreuzes','https://www.gesetze-im-internet.de/owig_1968/__125.html'],
+      ['10 · IHK Gera: Nächste Stufe der E-Rechnung, Stand 28.10.2026','https://www.ihk.de/gera/recht-und-steuern/aktuelles-rechtundsteuern/naechste-stufe-der-e-rechnung-7216566'],
+      ['11 · Pharmazeutische Zeitung: Erweiterte Standortklausel, vier Kriterien, 01.10.2026','https://www.pharmazeutische-zeitung.de/vier-kriterien-fuer-erleichterungen-168838/'],
+      ['12 · Bitkom: Ein Jahr Pflicht zur elektronischen Patientenakte, 01.10.2026','https://www.bitkom.org/index%2ephp/Presse/Presseinformation/1-Jahr-Pflicht-elektronische-Patientenakte-ePA']
+    ]
+  };
+
   return {
     lang:'de', locale:'de-DE', base:'',
-    mail:'martin.schweppe@grafitecture.de', apply:'martin.schweppe@grafitecture.de',
+    mail:'gunter.wendt@covendos.com', apply:'martin.schweppe@grafitecture.de',
     alias:{marke:'brand'},
-    CHANNELS, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t
+    CHANNELS, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t, mk
   };
 })();

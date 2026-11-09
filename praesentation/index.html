@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die ersten zwölf Monate · HEALTHKLICK</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../img/healthklick-icon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+<!--
+  Interaktive Präsentation „Die ersten zwölf Monate“ (Pitch-Vorlage, fiktiver Kunde)
+  Steuerung: Pfeiltasten, Leertaste, Wischen · O Übersicht · F Vollbild · N Notizen · Pos1/Ende
+  Parameter: ?embed=1 (Vorschau im Tablet auf der Website) · ?print=1 (alle Folien untereinander, Druckdialog)
+  Folie direkt öffnen: #5
+-->
+<main class="deck" id="deck" aria-roledescription="Präsentation" aria-label="Die ersten zwölf Monate">
+
+<!-- 1 · Titel -->
+<section class="slide s-title dark" data-notes="Begrüßen, Dank für die Einladung. Ziel heute: in 30 Minuten zeigen, wie Auenwald die ersten zwölf Monate nach dem Launch mit Menschen und Agenten plant. Fragen gern jederzeit.">
+  <span class="logo white" aria-hidden="true"></span>
+  <span class="deco-ring" aria-hidden="true"></span>
+  <p class="kicker">Pitch · Auenwald Pharma GmbH · 24. November 2026</p>
+  <h1>Die ersten<br>zwölf Monate<i class="plus" aria-hidden="true"></i></h1>
+  <p class="sub">Launch 2027 mit Menschen und KI-Agenten</p>
+  <p class="byline">Gunter Wendt · Healthklick</p>
+  <p class="fict">Fiktives Beispiel: Unternehmen, Präparat und Zahlen der Modellrechnungen sind erfunden.</p>
+</section>
+
+<!-- 2 · Agenda -->
+<section class="slide" data-notes="Sechs Punkte. Wer möchte, springt direkt: Die Agenda ist klickbar.">
+  <p class="kicker">Agenda</p>
+  <h2>Worüber wir heute sprechen</h2>
+  <ol class="agenda">
+    <li><button type="button" data-go="3"><span>01</span>2027: neue Spielregeln</button></li>
+    <li><button type="button" data-go="5"><span>02</span>Das Zeitfenster bis Monat 7</button></li>
+    <li><button type="button" data-go="6"><span>03</span>Unser Modell: Menschen und Agenten</button></li>
+    <li><button type="button" data-go="8"><span>04</span>Kanäle und Reichweite</button></li>
+    <li><button type="button" data-go="9"><span>05</span>Fahrplan und Steuerung</button></li>
+    <li><button type="button" data-go="12"><span>06</span>Zusammenarbeit und nächste Schritte</button></li>
+  </ol>
+</section>
+
+<!-- 3 · Spielregeln 2027 + Rechner -->
+<section class="slide" data-notes="Das Spargesetz wirkt ab Januar. Wichtig: In den ersten sechs Monaten gilt der Preis des Herstellers, darauf wirkt der Abschlag voll. Rechner live mit den Zahlen von Auenwald durchspielen, falls bekannt.">
+  <p class="kicker">01 · Ausgangslage</p>
+  <h2>2027: neue Spielregeln</h2>
+  <div class="cols">
+    <ul class="facts">
+      <li><b>15,5 %</b><span>Herstellerabschlag auf patentgeschützte Arzneimittel ab 1. Januar 2027, bisher 7 %</span></li>
+      <li><b>Leitplanken weg</b><span>AMNOG-Leitplanken und Kombinationsabschlag entfallen</span></li>
+      <li><b>Standortklausel</b><span>Eine Fachkommission schlägt Kriterien für Entlastungen vor, das Gesetz dazu steht noch aus</span></li>
+    </ul>
+    <div class="calc" id="calc-abschlag">
+      <h3>Was der Abschlag in den Monaten 1 bis 6 kostet</h3>
+      <label>Herstellerabgabepreis je Packung <output data-o="price"></output>
+        <input type="range" min="40" max="2000" step="10" value="480" data-i="price"></label>
+      <label>Packungen pro Monat zulasten der GKV <output data-o="packs"></output>
+        <input type="range" min="500" max="20000" step="500" value="4000" data-i="packs"></label>
+      <div class="res">
+        <p><span>Abschlag je Packung bisher, 7 %</span><b data-r="old"></b></p>
+        <p><span>Abschlag je Packung 2027, 15,5 %</span><b data-r="new"></b></p>
+        <p class="big"><span>Mehr Abschlag in sechs Monaten</span><b data-r="diff"></b></p>
+      </div>
+      <p class="note">Modellrechnung, vereinfacht: Abschlag auf den Herstellerabgabepreis, ohne Standortklausel und ohne weitere Rabatte.</p>
+    </div>
+  </div>
+  <p class="src">Quelle: Bundesministerium für Gesundheit, GKV-Beitragssatzstabilisierungsgesetz, 10.07.2026 · Pharmazeutische Zeitung, 01.10.2026</p>
+</section>
+
+<!-- 4 · Erreichbarkeit -->
+<section class="slide" data-notes="Die Zahlen sind europäische Durchschnittswerte. Kernbotschaft: Der Zugang ist knapp und selektiv. Wer drin ist, muss jedes Gespräch nutzen, und der Content muss passen.">
+  <p class="kicker">01 · Ausgangslage</p>
+  <h2>Wer überhaupt noch erreichbar ist</h2>
+  <div class="meters">
+    <figure class="meter" style="--v:53"><div class="ring-chart"><span>53 %</span></div><figcaption>der Ärztinnen und Ärzte in Europa sind für den Außendienst erreichbar</figcaption></figure>
+    <figure class="meter" style="--v:62"><div class="ring-chart"><span>62 %</span></div><figcaption>von ihnen treffen höchstens drei Pharmaunternehmen</figcaption></figure>
+    <figure class="meter" style="--v:30"><div class="ring-chart"><span>30 %</span></div><figcaption>der Arztgespräche nutzen überhaupt digitalen Content</figcaption></figure>
+    <figure class="meter" style="--v:77"><div class="ring-chart"><span>77 %</span></div><figcaption>der Inhalte für den Außendienst werden selten oder nie genutzt</figcaption></figure>
+  </div>
+  <p class="claim">Für Auenwald heißt das: zu den drei Unternehmen gehören, die eine Praxis noch empfängt.</p>
+  <p class="src">Quelle: Veeva Pulse Field Trends Report, Europa, 1. Quartal 2024</p>
+</section>
+
+<!-- 5 · Zeitfenster -->
+<section class="slide" data-notes="Phasen anklicken. Der siebte Monat ist der Wendepunkt: Ab da gilt der Erstattungsbetrag, rückwirkend verrechnet. Was bis dahin an Erfahrung in der Versorgung fehlt, ist schwer aufzuholen.">
+  <p class="kicker">02 · Zeitfenster</p>
+  <h2>Das Zeitfenster bis Monat 7</h2>
+  <div class="tl" id="timeline" role="tablist" aria-label="Phasen">
+    <button type="button" role="tab" aria-selected="true" data-p="0" style="--from:0;--to:3"><span>Vor dem Launch</span><small>Monat −3 bis 0</small></button>
+    <button type="button" role="tab" aria-selected="false" data-p="1" style="--from:3;--to:8.6"><span>Freier Preis</span><small>Monat 1 bis 6</small></button>
+    <button type="button" role="tab" aria-selected="false" data-p="2" style="--from:8.6;--to:10.8" class="mile"><span>Monat 7</span><small>Erstattungsbetrag</small></button>
+    <button type="button" role="tab" aria-selected="false" data-p="3" style="--from:10.8;--to:15"><span>Festigen</span><small>Monat 8 bis 12</small></button>
+  </div>
+  <div class="tl-detail">
+    <div data-pd="0"><h3>Vor dem Launch</h3><ul><li>Zielgruppe segmentieren, Kanalpräferenzen kennen</li><li>Mindestens zehn Content-Module medizinisch und rechtlich freigeben</li><li>Remote-Team einarbeiten und im CRM anbinden</li><li>Pharmakovigilanz-Prozess für alle Kanäle testen</li></ul></div>
+    <div data-pd="1" hidden><h3>Monat 1 bis 6: freier Preis</h3><ul><li>Die frühe Nutzenbewertung läuft, der G-BA beschließt in der Regel nach rund sechs Monaten</li><li>Maximale Reichweite: Außendienst bei Zentren, eReps in der Breite</li><li>Medical Information beantwortet Fachfragen vom ersten Tag an</li></ul></div>
+    <div data-pd="2" hidden><h3>Monat 7: Erstattungsbetrag</h3><ul><li>Der verhandelte Erstattungsbetrag gilt ab dem siebten Monat</li><li>Bis hier müssen Erstverordnungen und Erfahrung in der Versorgung stehen</li></ul></div>
+    <div data-pd="3" hidden><h3>Monat 8 bis 12: festigen</h3><ul><li>Bestehende Verordner per Remote betreuen, Kosten pro Kontakt senken</li><li>Patientenbegleitprogramm für Adhärenz</li><li>Außendienst auf die Praxen mit dem größten Potenzial konzentrieren</li></ul></div>
+  </div>
+  <p class="src">Rechtsgrundlage: § 35a und § 130b SGB V</p>
+</section>
+
+<!-- 6 · Modell -->
+<section class="slide" data-notes="Drei Ebenen, eine Kontakthistorie. Kreis steht für Menschen, Kreuz für Agenten, so markieren wir das überall.">
+  <p class="kicker">03 · Modell</p>
+  <h2>Menschen führen, Agenten arbeiten zu</h2>
+  <div class="layers">
+    <div class="layer"><i class="ring" aria-hidden="true"></i><h3>Außendienst</h3><p>Zentren, Kliniken und Top-Verordner. Persönlich, vorbereitet, mit Zeit.</p></div>
+    <div class="layer"><i class="ring" aria-hidden="true"></i><h3>eReps</h3><p>Die Breite und Vakanzgebiete per Video und Telefon, mit denselben Inhalten.</p></div>
+    <div class="layer agent"><i class="x" aria-hidden="true"></i><h3>Agenten</h3><p>Bereiten jeden Kontakt vor, dokumentieren, prüfen und fassen nach.</p></div>
+  </div>
+  <p class="claim">Eine Kontakthistorie für alle drei Ebenen. Leitkennzahl ist die Kontaktqualität, nicht die Kontaktzahl.</p>
+</section>
+
+<!-- 7 · Agenten -->
+<section class="slide" data-notes="Jeder Agent hat eine verantwortliche Person bei Healthklick. Agenten treffen keine Entscheidungen und sprechen nicht mit Ärztinnen und Ärzten.">
+  <p class="kicker">03 · Modell</p>
+  <h2>Sechs Agenten, sechs Verantwortliche</h2>
+  <div class="agents">
+    <div><h3><i class="x"></i>Briefing-Agent</h3><p>Historie, offene Fragen und freigegebene Materialien auf einer Seite</p><p class="own"><i class="ring"></i>Head of Hybrid Field Force</p></div>
+    <div><h3><i class="x"></i>Compliance-Agent</h3><p>Prüft Notizen, E-Mails und Materialien gegen HWG und Ihre SOPs</p><p class="own"><i class="ring"></i>AI Governance und Compliance</p></div>
+    <div><h3><i class="x"></i>Content-Agent</h3><p>Varianten aus freigegebenen Modulen, nie neue Werbeaussagen</p><p class="own"><i class="ring"></i>Modular Content Architect</p></div>
+    <div><h3><i class="x"></i>Vigilanz-Agent</h3><p>Erkennt mögliche Nebenwirkungen und startet den Meldeprozess</p><p class="own"><i class="ring"></i>Medical Director</p></div>
+    <div><h3><i class="x"></i>Begleit-Agent</h3><p>Erinnert Patienten und holt Pflegefachkräfte dazu, wenn nötig</p><p class="own"><i class="ring"></i>Lead Patient Journeys</p></div>
+    <div><h3><i class="x"></i>Insight-Agent</h3><p>Findet Muster und schlägt die nächste beste Aktion vor</p><p class="own"><i class="ring"></i>Data Scientist, Next Best Action</p></div>
+  </div>
+</section>
+
+<!-- 8 · Kanalmix + Reichweitenrechner -->
+<section class="slide" data-notes="Regler gemeinsam bewegen. Die Annahmen sind bewusst vorsichtig. Im Workshop setzen wir die echten Zahlen von Auenwald ein.">
+  <p class="kicker">04 · Kanäle</p>
+  <h2>Kanalmix und Reichweite</h2>
+  <div class="cols">
+    <div class="calc" id="calc-reach">
+      <label>Außendienst, Vollzeitkräfte <output data-o="ad"></output><input type="range" min="0" max="20" step="1" value="8" data-i="ad"></label>
+      <label>eReps, Vollzeitkräfte <output data-o="er"></output><input type="range" min="0" max="10" step="0.5" value="3" data-i="er"></label>
+      <label>Zielpraxen und Kliniken <output data-o="tg"></output><input type="range" min="500" max="8000" step="100" value="2500" data-i="tg"></label>
+      <div class="res">
+        <p><span>Persönliche Besuche im Monat</span><b data-r="f2f"></b></p>
+        <p><span>Remote-Kontakte im Monat</span><b data-r="rem"></b></p>
+        <p class="big"><span>Kontakte je Zielpraxis im Quartal</span><b data-r="per"></b></p>
+      </div>
+      <p class="note">Annahmen: 5 Besuche je Tag an 19 Tagen, 14 Remote-Kontakte je Tag an 20 Tagen. Modellrechnung.</p>
+    </div>
+    <div class="mixbars" id="mixbars" aria-hidden="true">
+      <div class="mb"><span>Außendienst</span><i data-b="f2f"></i></div>
+      <div class="mb"><span>eReps</span><i data-b="rem"></i></div>
+      <p class="mb-note">Dazu: freigegebene E-Mails, Webinare, Medical Information und ein Begleitprogramm für Patienten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · Fahrplan -->
+<section class="slide" data-notes="Der Fahrplan beginnt drei Monate vor dem Launch. Die Meilensteine sind gesetzlich gesetzt, alles andere planen wir mit Ihnen.">
+  <p class="kicker">05 · Fahrplan</p>
+  <h2>Fahrplan über zwölf Monate</h2>
+  <div class="gantt">
+    <div class="g-head"><span></span><div class="g-cols"><span>−3</span><span>−2</span><span>−1</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div></div>
+    <div class="g-row"><span>Segmentierung und Daten</span><div class="g-track"><i style="--a:1;--b:4"></i></div></div>
+    <div class="g-row"><span>Content-Module und Freigabe</span><div class="g-track"><i style="--a:1;--b:5"></i></div></div>
+    <div class="g-row"><span>Team und Einarbeitung</span><div class="g-track"><i style="--a:2;--b:4"></i></div></div>
+    <div class="g-row"><span>Außendienst</span><div class="g-track"><i class="ink" style="--a:4;--b:16"></i></div></div>
+    <div class="g-row"><span>eReps</span><div class="g-track"><i class="ink" style="--a:4;--b:16"></i></div></div>
+    <div class="g-row"><span>Medical Information</span><div class="g-track"><i class="blue" style="--a:3;--b:16"></i></div></div>
+    <div class="g-row"><span>Begleitprogramm</span><div class="g-track"><i class="blue" style="--a:5;--b:16"></i></div></div>
+    <div class="g-row"><span>Agenten und Steuerung</span><div class="g-track"><i class="x-bar" style="--a:3;--b:16"></i></div></div>
+    <div class="g-miles"><span></span><div class="g-track"><span style="--m:4">Launch</span><span class="lo" style="--m:9.5">G-BA-Beschluss</span><span style="--m:10">Erstattungsbetrag</span></div></div>
+  </div>
+</section>
+
+<!-- 10 · Compliance -->
+<section class="slide" data-notes="Compliance ist bei uns kein Nachsatz. Jeder Punkt hat eine verantwortliche Person und einen Agenten, der zuarbeitet.">
+  <p class="kicker">05 · Steuerung</p>
+  <h2>Compliance von Anfang an</h2>
+  <div class="grid3">
+    <div><h3>HWG und FSA-Kodex</h3><p>Nur freigegebene Aussagen, Pflichtangaben in jedem Kanal, keine Geschenke an Fachkreise.</p></div>
+    <div><h3>AMG §§ 75 und 76</h3><p>Pharmaberater mit Sachkenntnis. Nebenwirkungen werden aufgezeichnet und an Sie weitergegeben.</p></div>
+    <div><h3>Pharmakovigilanz</h3><p>Der Vigilanz-Agent erkennt Hinweise, eine Fachperson prüft und meldet, getestet vor dem Launch.</p></div>
+    <div><h3>DSGVO</h3><p>Auftragsverarbeitung, Daten in der EU, Löschfristen und Rollen dokumentiert.</p></div>
+    <div><h3>KI-Verordnung</h3><p>Transparenz nach Art. 50 seit August 2026: Wo KI mit Menschen spricht, ist das erkennbar. Bei uns sprechen Menschen.</p></div>
+    <div><h3>Vier Augen</h3><p>Agenten schlagen vor, Menschen entscheiden. Jede Entscheidung ist nachvollziehbar.</p></div>
+  </div>
+</section>
+
+<!-- 11 · Cockpit -->
+<section class="slide" data-notes="So sieht das Cockpit aus, das Sie jede Woche bekommen. Die Werte hier sind Beispiele.">
+  <p class="kicker">05 · Steuerung</p>
+  <h2>Das Launch-Cockpit</h2>
+  <div class="kpis">
+    <div class="kpi"><p class="k-l">Zielgruppe mit qualifiziertem Kontakt</p><p class="k-v">62 %</p><div class="spark" data-h="20,28,35,41,47,52,58,62"></div></div>
+    <div class="kpi"><p class="k-l">Zeit bis zur ersten Verordnung je Zielpraxis</p><p class="k-v">23 Tage</p><div class="spark" data-h="41,38,34,31,29,27,24,23"></div></div>
+    <div class="kpi"><p class="k-l">Offene Anfragen an Medical Information</p><p class="k-v">4</p><p class="k-s">Bearbeitung im Schnitt 1,2 Tage</p></div>
+    <div class="kpi"><p class="k-l">Patientenstarts im Begleitprogramm</p><p class="k-v">118</p><div class="spark" data-h="4,11,22,37,55,74,96,118"></div></div>
+  </div>
+  <p class="note center">Beispielwerte zur Veranschaulichung</p>
+</section>
+
+<!-- 12 · Zusammenarbeit -->
+<section class="slide" data-notes="Klare Rollen auf beiden Seiten, fester Rhythmus. Personalgestellung nach dem AÜG läuft direkt über unseren Partner, nicht über uns.">
+  <p class="kicker">06 · Zusammenarbeit</p>
+  <h2>So arbeiten wir zusammen</h2>
+  <div class="cols">
+    <div class="who"><h3>Auenwald</h3><ul><li>Brand Team</li><li>Medical Affairs</li><li>Market Access</li><li>Recht und Compliance</li></ul></div>
+    <div class="who hk"><h3>Healthklick</h3><ul><li>Projektleitung</li><li>Field Force Lead</li><li>Medical Information</li><li>Verantwortliche je Agent</li></ul></div>
+  </div>
+  <div class="rhythm"><p><b>Jede Woche</b>Steuerungs-Call, 30 Minuten</p><p><b>Jeden Monat</b>Review mit dem Cockpit</p><p><b>Jedes Quartal</b>Workshop zu Strategie und Inhalten</p></div>
+  <p class="note">Leistungen als Dienstleistung mit Leistungsnachweisen. Personalgestellung nach dem Arbeitnehmerüberlassungsgesetz rechnet unser Personalpartner direkt mit Ihnen ab.</p>
+</section>
+
+<!-- 13 · Nächste Schritte -->
+<section class="slide" data-notes="Konkreter Vorschlag: Workshop in KW 49. Termine direkt im Gespräch abstimmen.">
+  <p class="kicker">06 · Nächste Schritte</p>
+  <h2>Nächste Schritte</h2>
+  <ol class="steps">
+    <li><span>KW 49</span><h3>Workshop, zwei Stunden</h3><p>Datenlage, Zielgruppe, Kanäle, Freigabeprozess</p></li>
+    <li><span>KW 50</span><h3>Pilotplan und Angebot</h3><p>Pilotgebiet, Team, Kennzahlen, Kosten pro Kontakt</p></li>
+    <li><span>Januar 2027</span><h3>Start der Vorbereitung</h3><p>Content-Module, Einarbeitung, Tests der Prozesse</p></li>
+  </ol>
+</section>
+
+<!-- 14 · Danke -->
+<section class="slide s-end dark" data-notes="Danke. Unterlagen kommen heute per E-Mail.">
+  <span class="logo white" aria-hidden="true"></span>
+  <span class="deco-ring" aria-hidden="true"></span>
+  <h2>Mehr Zeit<br>für Medizin<i class="plus" aria-hidden="true"></i></h2>
+  <div class="contact"><p><b>Gunter Wendt</b><br>Ansprechpartner für Pharmaunternehmen<br><a href="mailto:gunter.wendt@covendos.com">gunter.wendt@covendos.com</a><br>healthklick.de</p>
+    <img class="qr" src="../img/marketing/qr-kontakt.svg" alt="QR-Code: Gespräch vereinbaren"></div>
+  <p class="fict">Healthklick ist ein Angebot der Grafitecture GmbH, Mannheim.</p>
+</section>
+
+</main>
+
+<nav class="bar" aria-label="Präsentation steuern">
+  <button type="button" data-a="prev" aria-label="Vorige Folie">‹</button>
+  <span class="count" aria-live="polite"><b id="n">1</b> / <span id="t">14</span></span>
+  <button type="button" data-a="next" aria-label="Nächste Folie">›</button>
+  <button type="button" data-a="overview" aria-label="Übersicht (O)">▦</button>
+  <button type="button" data-a="notes" aria-label="Notizen (N)">N</button>
+  <button type="button" data-a="full" aria-label="Vollbild (F)">⤢</button>
+</nav>
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<aside class="notes" id="notes" hidden><h2>Notizen</h2><p id="notes-t"></p></aside>
+
+<script src="deck.js"></script>
+</body>
+</html>

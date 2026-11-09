@@ -18,6 +18,11 @@ js/en.js                   Englische Daten und Texte, gleiche Struktur wie js/de
 fonts/source-sans-3.woff2  Web-Fallback-Schrift, lokal (keine Google-Verbindung)
 img/                       Bilder (WebP, Higgsfield AI), Logo, Zeichen und Kreuz als SVG
 kit/grafitecture-credit/   Grafitecture-Feld (Kit v1.2, unverändert aus grafitecture/lannee_webseite)
+css/marketing.css          Gestaltung des Marketing-Bereichs unter dem Footer
+js/marketing.js            Aufbau und Verhalten des Marketing-Bereichs (Tablets, Druckmuster, Rechnung, Freigabe)
+js/marketing-data.js       Kampagneninhalte: Redaktionsplan mit 18 Beiträgen, Profile, Ansprechpartner (Deutsch)
+praesentation/             Interaktive Präsentation „Die ersten zwölf Monate“ (index.html, deck.css, deck.js)
+img/marketing/             Give-away-Visualisierungen (SVG), QR-Codes, später die Team-Musterbilder
 middleware.js              Passwortschutz mit Login-Seite (nur bei Vercel)
 .htaccess                  HTTPS, Caching, Sicherheits-Header, nur falls die Seite einmal auf Apache läuft
 ```
@@ -51,6 +56,7 @@ middleware.js              Passwortschutz mit Login-Seite (nur bei Vercel)
 | `#marke` (Ansicht) | `#brand` |
 | `#impressum` (Ansicht) | `#legal-notice` |
 | `#datenschutz` (Ansicht) | `#privacy` |
+| `#marketing`, `#mk-social`, `#mk-print`, `#mk-invoice`, `#mk-give`, `#mk-deck`, `#mk-ok` | gleich |
 
 Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öffnet die englische Karriereseite).
 
@@ -85,6 +91,32 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Quelle ist das Kit in `grafitecture/lannee_webseite`, Ordner `kit/grafitecture-credit/` (README dort). Änderungen nur dort machen und bei einer neuen Version Ordner, Schnipsel und CSS hier nachziehen.
 - Eine zusätzliche Zeile wie „Konzeption und Gestaltung: Grafitecture“ gehört nicht mehr ins Impressum (das Feld nennt die Agentur).
 
+## Leads
+
+- Alle Geschäftsanfragen gehen an **Gunter Wendt, gunter.wendt@covendos.com** (`mail` in `js/de.js` und `js/en.js`): Kontaktformular, sichtbare Kontaktadressen, Fußzeile, FAQ und der Link „Gespräch zum Thema anfragen“ nach der Whitepaper-Registrierung (vorbereitete E-Mail mit den Registrierungsdaten).
+- Bewerbungen bleiben bei martin.schweppe@grafitecture.de (`apply`), ebenso Impressum und Datenschutzkontakt (Anbieter und Verantwortlicher ist die Grafitecture GmbH).
+- Quelle ohne Tracking: Links mit `?quelle=linkedin` (oder `instagram`, `facebook`, `qr` …) schreiben „Gefunden über: …“ in die Anfrage. Konstante `SOURCE` in `js/site.js`.
+- Die Formulare öffnen weiterhin das E-Mail-Programm der Besucher (mailto). Für den automatischen Versand braucht es einen Mail-Dienst; danach Datenschutzerklärung anpassen.
+
+## Marketing-Material zur Freigabe (unter dem Footer)
+
+- Abschnitt `#marketing` direkt nach `</footer>` in `index.html` und `en/index.html`, sichtbar in allen Ansichten. Inhalt baut `js/marketing.js`, Gestaltung `css/marketing.css`.
+- Kapitel: Social Media (Kanalstrategie, Spielregeln, Tablet mit LinkedIn-, Instagram- und Facebook-Ansicht, Redaktionsplan KW 47/2026 bis KW 2/2027), Print (Briefbogen nach DIN 5008, Visitenkarte, Komplimentkarte, Umschlag, Imagebroschüre, Whitepaper, Mappe, Roll-up, QR-Karte, E-Mail-Signatur), Rechnungswesen (Rechnung mit markierten Pflichtangaben, E-Rechnung), Give-aways (Ideenbuch, Drei Minuten, Der Klick), Präsentation (Vorschau im Tablet), Freigabe (offene Punkte, Rückmeldung per vorbereiteter E-Mail an Grafitecture, Quellen).
+- Texte drumherum je Sprache in `SITE.mk` (`js/de.js`, `js/en.js`). Die Kampagne selbst (Beiträge, Drucksachen, Rechnung, Präsentation) ist auf Deutsch, auch auf der englischen Seite.
+- Beiträge ändern: `POSTS` in `js/marketing-data.js` (Datum, Kanäle `li`/`ig`/`fb`, Säule, Text, Bildtyp `v`). Ansprechpartner, Telefon und Domain stehen in `CONTACT`.
+- Druckmuster sind maßstäblich in HTML gebaut (`--mm`, Schriftgrade in pt). Antippen öffnet die Lupe.
+- QR-Codes: `img/marketing/qr-vcard.svg` (Kontaktdaten Gunter Wendt) und `qr-kontakt.svg` (`https://healthklick.de/?quelle=qr#kontakt`). Funktionieren erst, wenn die Domain registriert und verbunden ist.
+- Team-Musterbilder (Ausflug, Bowling, Weihnachtsmarkt): Platzhalter, bis die Bilder mit Higgsfield erzeugt sind. Dann als `img/marketing/ausflug.webp`, `bowling.webp`, `weihnachtsmarkt.webp` ablegen und in `IMG` (`js/marketing-data.js`) `pending:false` setzen. In den echten Kanälen erscheinen nur echte Fotos (KI-Bilder kennzeichnen, Art. 50 KI-Verordnung).
+- **Farbausnahme:** Die nachgebauten Oberflächen von LinkedIn, Instagram und Facebook im Tablet nutzen deren eigene Farben.
+- **Kreuz:** In Drucksachen und auf Give-aways steht das Kreuz nur als Teil der Wortmarke, im Claim oder auf Imperial Blue (§ 125 OWiG schützt das rote Kreuz auf weißem Grund). Vor dem Druck rechtlich prüfen lassen.
+- Vor dem öffentlichen Livegang: Abschnitt `#marketing`, die beiden Skripte und `css/marketing.css` aus beiden Sprachen entfernen (oder hinter eine eigene Freigabe-Adresse legen).
+
+## Präsentation
+
+- `praesentation/` (Deutsch): 14 Folien in 1600 × 900, skaliert aufs Fenster. Pfeiltasten, Leertaste, Wischen; `O` Übersicht, `F` Vollbild, `N` Sprechernotizen; `#5` öffnet Folie 5.
+- `?embed=1` für die Vorschau im Tablet, `?print=1` zeigt alle Folien untereinander und öffnet den Druckdialog (PDF).
+- Fiktiver Kunde (Auenwald Pharma GmbH), fiktive Modellrechnungen; Rechtsstand und Zahlen mit Quellen auf den Folien.
+
 ## FAQ
 
 - Ansicht `#faq` in beiden Sprachen, 36 Fragen in sechs Gruppen (davon 13 in „Healthklick Field Force und Arbeitnehmerüberlassung“), Antworten als `<details>` (Kreuz dreht sich beim Öffnen zum ×)
@@ -97,7 +129,12 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - [ ] Domain festlegen, dann `canonical` und `hreflang` mit vollständiger Adresse eintragen (beide Sprachen)
 - [ ] Impressum: Telefonnummer ergänzen; Personalpartner (Firma, Register, AÜG-Erlaubnis mit Behörde und Datum) nennen
 - [ ] Datenschutz: Vercel-Tarif prüfen (Data Processing Addendum gilt für Pro und Enterprise), Logfile-Speicherdauer eintragen, Pflicht zur Benennung eines Datenschutzbeauftragten prüfen, rechtliche Prüfung
-- [ ] Eigene Adressen (z. B. info@ und karriere@) anlegen und `martin.schweppe@grafitecture.de` ersetzen
+- [ ] Eigene Adressen (z. B. karriere@) anlegen und `martin.schweppe@grafitecture.de` ersetzen
+- [ ] Empfänger der Anfragen (gunter.wendt@covendos.com) rechtlich einordnen: Vertrag nach Art. 28 oder Art. 26 DSGVO, Datenschutzerklärung Abschnitt 6 ergänzen
+- [ ] Domain healthklick.de registrieren (am 9.11.2026 frei, healthklick.com vergeben) und verbinden; QR-Codes zeigen darauf
+- [ ] Markenrecherche „HEALTHKLICK“ und Prüfung des Kreuzes (§ 125 OWiG, DRK-Gesetz)
+- [ ] Funktion und Telefonnummer von Gunter Wendt für Drucksachen bestätigen
+- [ ] Marketing-Bereich unter dem Footer entfernen
 - [ ] Kontakt-, Bewerbungs- und Whitepaper-Formular an ein Backend/CRM anbinden (derzeit mailto und PDF im Browser); danach Datenschutz anpassen
 - [ ] Beispielstellen durch echte Stellen ersetzen
 - [ ] Englische Texte gegenlesen lassen (Muttersprachler, Fachbegriffe Pharma/Recht)

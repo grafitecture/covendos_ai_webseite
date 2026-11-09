@@ -14,6 +14,7 @@
 <link rel="preload" href="fonts/source-sans-3.woff2" as="font" type="font/woff2" crossorigin>
 <script>/* Logo-Intro nur beim Öffnen der Startseite: nicht bei Sprungmarken, nicht beim Sprachwechsel innerhalb der Seite, nicht bei reduzierter Bewegung. Ablauf in js/site.js */(function(d){try{var h=location.hash,r=document.referrer;if((h===''||h==='#'||h==='#top')&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!(r&&r.indexOf(location.origin+'/')===0)){d.classList.add('intro');setTimeout(function(){if(!d.classList.contains('intro-js'))d.classList.remove('intro')},4000)}}catch(e){}})(document.documentElement);</script>
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/marketing.css">
 </head>
 <body>
 <a class="sr-only" href="#inhalt">Zum Inhalt springen</a>
@@ -305,8 +306,8 @@
     <div class="phi">
       <aside class="contact-aside">
         <p class="lead">Wählen Sie Ihre Themen. Wir bereiten das erste Gespräch genau darauf vor und melden uns innerhalb eines Werktags.</p>
-        <p class="addr" style="margin-top:var(--s-4)"><a href="mailto:martin.schweppe@grafitecture.de">martin.schweppe<wbr>@grafitecture.de</a></p>
-        <p class="meta">Healthklick · Grafitecture GmbH<br>Rebenstraße 9a, 68309 Mannheim</p>
+        <p class="addr" style="margin-top:var(--s-4)"><a href="mailto:gunter.wendt@covendos.com">gunter.wendt<wbr>@covendos.com</a></p>
+        <p class="meta">Ihr Ansprechpartner: Gunter Wendt<br>Healthklick · Grafitecture GmbH<br>Rebenstraße 9a, 68309 Mannheim</p>
         <p style="margin-top:var(--s-4)"><button type="button" class="link" id="checklist-btn">Themen-Checkliste als PDF</button><br><span class="small">Zum Ausdrucken und Ankreuzen, zum Beispiel für Ihr internes Abstimmungsmeeting.</span></p>
       </aside>
 
@@ -354,11 +355,11 @@
         </fieldset>
 
         <div class="briefing" aria-live="polite">
-          <p class="small" style="margin-bottom:var(--s-1)">Vorschau Ihrer E-Mail an martin.schweppe@grafitecture.de</p>
+          <p class="small" style="margin-bottom:var(--s-1)">Vorschau Ihrer E-Mail an gunter.wendt@covendos.com</p>
           <pre id="preview"></pre>
         </div>
         <div class="actions">
-          <a class="btn" id="mail-btn" href="mailto:martin.schweppe@grafitecture.de">Anfrage per E-Mail senden</a>
+          <a class="btn" id="mail-btn" href="mailto:gunter.wendt@covendos.com">Anfrage per E-Mail senden</a>
           <button type="button" class="btn ghost" id="pdf-btn">Briefing als PDF speichern</button>
           <button type="button" class="link" id="copy-btn">Text kopieren</button>
         </div>
@@ -709,7 +710,7 @@
     <div class="wrap phi">
       <div><h3 class="t-h4" id="h-faq-more">Ihre Frage ist nicht dabei?</h3></div>
       <div>
-        <p class="lead">Wir beantworten sie gern im Gespräch. Wählen Sie Ihre Themen im <a class="link" href="#kontakt">Kontaktformular</a> oder schreiben Sie an <a class="link" href="mailto:martin.schweppe@grafitecture.de">martin.schweppe<wbr>@grafitecture.de</a>.</p>
+        <p class="lead">Wir beantworten sie gern im Gespräch. Wählen Sie Ihre Themen im <a class="link" href="#kontakt">Kontaktformular</a> oder schreiben Sie an <a class="link" href="mailto:gunter.wendt@covendos.com">gunter.wendt<wbr>@covendos.com</a>.</p>
         <div class="ctas"><a class="btn" href="#kontakt">Gespräch vereinbaren</a><a class="btn ghost" href="#bewerben">Bewerben</a></div>
       </div>
     </div>
@@ -828,10 +829,11 @@
 
       <h3>6. Kontakt per E-Mail und Kontaktformular</h3>
       <p>Das Kontaktformular sendet nichts an uns. Es bereitet eine E-Mail vor, die Sie selbst aus Ihrem E-Mail-Programm senden. Vorschau, Themen-Checkliste und Briefing als PDF entstehen ausschließlich in Ihrem Browser.</p>
+      <p>Anfragen an Healthklick beantwortet Gunter Wendt. Die vorbereitete E-Mail geht deshalb an <a class="link" href="mailto:gunter.wendt@covendos.com">gunter.wendt<wbr>@covendos.com</a>. <span class="todo">Bitte rechtlich klären und hier ergänzen: Das Postfach liegt bei der Covendos-Gruppe. Je nach Zusammenarbeit braucht es einen Vertrag zur Auftragsverarbeitung (Art. 28 DSGVO) oder eine Vereinbarung über die gemeinsame Verantwortung (Art. 26 DSGVO); der Empfänger ist dann hier mit Firma und Anschrift zu nennen.</span></p>
       <p>Wenn Sie uns schreiben, verarbeiten wir Ihre Angaben, um Ihre Anfrage zu beantworten und ein Gespräch vorzubereiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, wenn Ihre Anfrage auf einen Vertrag zielt, sonst unser berechtigtes Interesse an der Beantwortung (Art. 6 Abs. 1 lit. f DSGVO). Ihre Angaben sind freiwillig, ohne sie können wir Ihre Anfrage aber nicht beantworten. E-Mails werden bei unserem E-Mail-Anbieter gespeichert, der sie in unserem Auftrag verarbeitet. Wir löschen die Daten, wenn die Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen, etwa für Geschäftsbriefe nach § 257 HGB.</p>
 
       <h3>7. Whitepaper</h3>
-      <p>Für ein Whitepaper fragen wir Vorname, Nachname, geschäftliche E-Mail-Adresse, Unternehmen und Funktion ab. Diese Angaben werden derzeit nicht an uns übermittelt. Sie werden nur in Ihrem Browser gespeichert (Abschnitt 5), auch das PDF entsteht in Ihrem Browser. Das gilt ebenso für das Häkchen, neue Whitepaper per E-Mail zu erhalten: Diesen Wunsch können wir derzeit nur berücksichtigen, wenn Sie uns schreiben. Bevor Registrierungen an uns übertragen werden, passen wir diese Erklärung an.</p>
+      <p>Für ein Whitepaper fragen wir Vorname, Nachname, geschäftliche E-Mail-Adresse, Unternehmen und Funktion ab. Diese Angaben werden derzeit nicht an uns übermittelt. Sie werden nur in Ihrem Browser gespeichert (Abschnitt 5), auch das PDF entsteht in Ihrem Browser. Das gilt ebenso für das Häkchen, neue Whitepaper per E-Mail zu erhalten: Diesen Wunsch können wir derzeit nur berücksichtigen, wenn Sie uns schreiben. Nach der Registrierung können Sie über „Gespräch anfragen“ eine vorbereitete E-Mail mit Ihren Angaben an gunter.wendt@covendos.com senden; auch diese verschicken Sie selbst (Abschnitt 6). Bevor Registrierungen automatisch an uns übertragen werden, passen wir diese Erklärung an.</p>
 
       <h3>8. Bewerbungen</h3>
       <p>Auch das Bewerbungsformular bereitet nur eine E-Mail vor. Wenn Sie sich bewerben, verarbeiten wir Ihre Angaben und Unterlagen, um über die Begründung eines Beschäftigungsverhältnisses zu entscheiden (Art. 6 Abs. 1 lit. b DSGVO). Bewerben Sie sich für einen Einsatz beim Kunden, geben wir Ihr Profil nur mit Ihrer ausdrücklichen Einwilligung an unseren Personalpartner und an das jeweilige Unternehmen weiter (Art. 6 Abs. 1 lit. a DSGVO). Nach Abschluss des Verfahrens löschen wir Ihre Unterlagen spätestens nach sechs Monaten. In unseren Talentpool nehmen wir Sie nur mit Ihrer Einwilligung auf.</p>
@@ -863,11 +865,14 @@
       <div><h3>Leistungen</h3><ul><li><a href="#leistungen">Hybrider Außendienst</a></li><li><a href="#leistungen">Patient Services</a></li><li><a href="#leistungen">Medical Information</a></li><li><a href="#personal">Healthklick Field Force</a></li></ul></div>
       <div><h3>Healthklick</h3><ul><li><a href="#deutschlandweit">Mannheim und deutschlandweit</a></li><li><a href="#karriere">Karriere</a></li><li><a href="#faq">FAQ</a></li><li><a href="#marke">Markenleitfaden</a></li></ul></div>
       <div><h3>Anbieter</h3><ul><li>Grafitecture GmbH</li><li>Rebenstraße 9a</li><li>68309 Mannheim</li><li><a href="https://www.grafitecture.de/" target="_blank" rel="noopener">grafitecture.de</a></li></ul></div>
-      <div><h3>Kontakt</h3><ul><li><a href="mailto:martin.schweppe@grafitecture.de">martin.schweppe<wbr>@grafitecture.de</a></li><li><a href="#kontakt">Gespräch vereinbaren</a></li><li><a href="#impressum">Impressum</a></li><li><a href="#datenschutz">Datenschutz</a></li><li><a href="en/" hreflang="en" lang="en">English version</a></li></ul></div>
+      <div><h3>Kontakt</h3><ul><li><a href="mailto:gunter.wendt@covendos.com">gunter.wendt<wbr>@covendos.com</a></li><li><a href="#kontakt">Gespräch vereinbaren</a></li><li><a href="#impressum">Impressum</a></li><li><a href="#datenschutz">Datenschutz</a></li><li><a href="en/" hreflang="en" lang="en">English version</a></li></ul></div>
     </div>
     <p class="foot-note">© 2026 Grafitecture GmbH, Mannheim. Healthklick ist ein Angebot der Grafitecture GmbH. Konzeptentwurf, November 2026: abgebildete Personen und Beispielstellen sind fiktiv, Bilder mit KI erzeugt. Marktzahlen: IQVIA, Arztkommunikation 2023.</p>
   </div>
 </footer>
+
+<!-- Marketing-Material zur Freigabe: Inhalt baut js/marketing.js (Kampagne: js/marketing-data.js, Texte: SITE.mk) -->
+<section id="marketing" class="mk" aria-labelledby="mk-title"><noscript><p class="wrap" style="padding-block:2rem">Für diesen Bereich bitte JavaScript aktivieren.</p></noscript></section>
 
 <!-- Whitepaper-Dialog -->
 <dialog id="wp-dialog" aria-labelledby="wp-title">
@@ -895,6 +900,7 @@
         <button type="button" class="btn" id="wp-pdf">PDF speichern</button>
         <button type="button" class="btn ghost" id="wp-read" aria-expanded="false" aria-controls="wp-reader">Hier lesen</button>
       </div>
+      <p class="wp-talk"><a class="link" id="wp-talk" href="mailto:gunter.wendt@covendos.com">Gespräch zum Thema anfragen</a><br><span class="small">Öffnet eine vorbereitete E-Mail an Gunter Wendt mit Ihren Angaben.</span></p>
       <p class="status" id="wp-status" role="status"></p>
       <div class="reader" id="wp-reader" hidden></div>
     </div>
@@ -903,5 +909,7 @@
 
 <script src="js/de.js"></script>
 <script src="js/site.js"></script>
+<script src="js/marketing-data.js"></script>
+<script src="js/marketing.js"></script>
 </body>
 </html>
