@@ -21,6 +21,7 @@ const HASHES = [
   ['faq-recht', 'faq-compliance'], ['faq-patienten', 'faq-patients'], ['faq-personal', 'faq-staffing']
 ];
 for (let i = 1; i <= 30; i++) HASHES.push(['faq-q' + i, 'faq-q' + i]);   // Quellen der FAQ
+['marketing', 'mk-social', 'mk-print', 'mk-invoice', 'mk-give', 'mk-deck', 'mk-ok', 'mk-tablet'].forEach(id => HASHES.push([id, id]));   // Marketing-Bereich unter dem Footer
 const LANGS = ['de', 'en'];
 function mapHash(h, from, to){
   if (from === to) return h;
@@ -78,7 +79,8 @@ function route(){
   let view = 'site', target = null;
   if (h) {
     const el = document.getElementById(h);
-    if (el) { const c = el.closest('#site, #brand, .view'); view = c ? c.id : 'site'; target = (c === el) ? null : el; }
+    if (el && el.closest('#marketing')) { view = (VIEWS.find(v => !document.getElementById(v).hidden)) || 'site'; target = el; }
+    else if (el) { const c = el.closest('#site, #brand, .view'); view = c ? c.id : 'site'; target = (c === el) ? null : el; }
   }
   const changed = document.getElementById(view).hidden;
   showView(view);
@@ -280,6 +282,8 @@ const val = id => ($('#'+id).value || '').trim();
 function selectedTopics(){ return $$('input[name="topic"]:checked').map(i => i.value); }
 function market(){ const r = $('input[name="market"]:checked'); return r ? r.value : ''; }
 const B = T.brief;
+/* Quelle der Anfrage, z. B. ?quelle=linkedin aus Social Media oder von QR-Codes. Steht nur im Text der Anfrage, keine Cookies */
+const SOURCE = (() => { try { const v = new URLSearchParams(location.search).get('quelle'); return v ? v.replace(/[^\w\- ]/g, '').slice(0, 40) : ''; } catch(e){ return ''; } })();
 function contextLines(){ return [B.market + ': ' + (market()||B.open), B.area + ': ' + (val('f-area')||B.open), B.phase + ': ' + (val('f-phase')||B.open), B.time + ': ' + (val('f-time')||B.open)]; }
 function briefingText(){
   const t = selectedTopics(); const lines = [];
@@ -287,6 +291,7 @@ function briefingText(){
   lines.push(B.topicsH); if (t.length) t.forEach(x => lines.push('– ' + x)); else lines.push('– ' + B.noTopics);
   lines.push('', B.contextH, ...contextLines().map(l => '– ' + l));
   if (val('f-msg')) lines.push('', B.msgH, val('f-msg'));
+  if (SOURCE) lines.push('', B.source + SOURCE);
   lines.push('', B.bye, val('f-name') || B.namePh);
   const sig = [val('f-role'), val('f-company')].filter(Boolean).join(', '); if (sig) lines.push(sig);
   const reach = [val('f-mail'), val('f-phone')].filter(Boolean).join(' | '); if (reach) lines.push(reach);
@@ -428,6 +433,8 @@ function showReady(){
   $('#wp-thanks').textContent = W.thanks(reg.first, currentPaper.title);
   $('#wp-reader').hidden = true; $('#wp-read').setAttribute('aria-expanded', false); $('#wp-read').textContent = W.read;
   $('#wp-reader').innerHTML = readerHTML(currentPaper); $('#wp-status').textContent = '';
+  // Lead-Weg: vorbereitete E-Mail an den Ansprechpartner (SITE.mail) mit den Registrierungsdaten
+  $('#wp-talk').href = `mailto:${MAIL}?subject=${encodeURIComponent(W.talkSubj(currentPaper.title))}&body=${encodeURIComponent(W.talkBody(reg, currentPaper.title) + (SOURCE ? '\n\n' + B.source + SOURCE : ''))}`;
 }
 function openPaper(id){
   currentPaper = PAPERS.find(p => p.id === id);
