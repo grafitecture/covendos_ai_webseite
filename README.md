@@ -93,8 +93,7 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 
 ## Leads
 
-- Alle Geschäftsanfragen gehen an **Gunter Wendt, gunter.wendt@covendos.com** (`mail` in `js/de.js` und `js/en.js`): Kontaktformular, sichtbare Kontaktadressen, Fußzeile, FAQ und der Link „Gespräch zum Thema anfragen“ nach der Whitepaper-Registrierung (vorbereitete E-Mail mit den Registrierungsdaten).
-- Bewerbungen bleiben bei martin.schweppe@grafitecture.de (`apply`), ebenso Impressum und Datenschutzkontakt (Anbieter und Verantwortlicher ist die Grafitecture GmbH).
+- Alle Anfragen gehen an **Martin Schweppe, martin.schweppe@grafitecture.de** (`mail` und `apply` in `js/de.js` und `js/en.js`): Kontaktformular, Bewerbungen, sichtbare Kontaktadressen, Fußzeile, FAQ und der Link „Gespräch zum Thema anfragen“ nach der Whitepaper-Registrierung (vorbereitete E-Mail mit den Registrierungsdaten). Martin Schweppe ist auch Absender aller Drucksachen, der Signatur und der Präsentation (`CONTACT` in `js/marketing-data.js`).
 - Quelle ohne Tracking: Links mit `?quelle=linkedin` (oder `instagram`, `facebook`, `qr` …) schreiben „Gefunden über: …“ in die Anfrage. Konstante `SOURCE` in `js/site.js`.
 - Die Formulare öffnen weiterhin das E-Mail-Programm der Besucher (mailto). Für den automatischen Versand braucht es einen Mail-Dienst; danach Datenschutzerklärung anpassen.
 
@@ -105,7 +104,7 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - Texte drumherum je Sprache in `SITE.mk` (`js/de.js`, `js/en.js`). Die Kampagne selbst (Beiträge, Drucksachen, Rechnung, Präsentation) ist auf Deutsch, auch auf der englischen Seite.
 - Beiträge ändern: `POSTS` in `js/marketing-data.js` (Datum, Kanäle `li`/`ig`/`fb`, Säule, Text, Bildtyp `v`). Ansprechpartner, Telefon und Domain stehen in `CONTACT`.
 - Druckmuster sind maßstäblich in HTML gebaut (`--mm`, Schriftgrade in pt). Antippen öffnet die Lupe.
-- QR-Codes: `img/marketing/qr-vcard.svg` (Kontaktdaten Gunter Wendt) und `qr-kontakt.svg` (`https://healthklick.de/?quelle=qr#kontakt`). Funktionieren erst, wenn die Domain registriert und verbunden ist.
+- QR-Codes: `img/marketing/qr-vcard.svg` (Kontaktdaten Martin Schweppe) und `qr-kontakt.svg` (`https://healthklick.de/?quelle=qr#kontakt`). Funktionieren erst, wenn die Domain registriert und verbunden ist.
 - Team-Musterbilder (Ausflug, Bowling, Weihnachtsmarkt): Platzhalter, bis die Bilder mit Higgsfield erzeugt sind. Dann als `img/marketing/ausflug.webp`, `bowling.webp`, `weihnachtsmarkt.webp` ablegen und in `IMG` (`js/marketing-data.js`) `pending:false` setzen. In den echten Kanälen erscheinen nur echte Fotos (KI-Bilder kennzeichnen, Art. 50 KI-Verordnung).
 - **Farbausnahme:** Die nachgebauten Oberflächen von LinkedIn, Instagram und Facebook im Tablet nutzen deren eigene Farben.
 - **Kreuz:** In Drucksachen und auf Give-aways steht das Kreuz nur als Teil der Wortmarke, im Claim oder auf Imperial Blue (§ 125 OWiG schützt das rote Kreuz auf weißem Grund). Vor dem Druck rechtlich prüfen lassen.
@@ -130,10 +129,9 @@ Anker der jeweils anderen Sprache funktionieren auch (z. B. `/en/#karriere` öff
 - [ ] Impressum: Telefonnummer ergänzen; Personalpartner (Firma, Register, AÜG-Erlaubnis mit Behörde und Datum) nennen
 - [ ] Datenschutz: Vercel-Tarif prüfen (Data Processing Addendum gilt für Pro und Enterprise), Logfile-Speicherdauer eintragen, Pflicht zur Benennung eines Datenschutzbeauftragten prüfen, rechtliche Prüfung
 - [ ] Eigene Adressen (z. B. karriere@) anlegen und `martin.schweppe@grafitecture.de` ersetzen
-- [ ] Empfänger der Anfragen (gunter.wendt@covendos.com) rechtlich einordnen: Vertrag nach Art. 28 oder Art. 26 DSGVO, Datenschutzerklärung Abschnitt 6 ergänzen
 - [ ] Domain healthklick.de registrieren (am 9.11.2026 frei, healthklick.com vergeben) und verbinden; QR-Codes zeigen darauf
 - [ ] Markenrecherche „HEALTHKLICK“ und Prüfung des Kreuzes (§ 125 OWiG, DRK-Gesetz)
-- [ ] Funktion und Telefonnummer von Gunter Wendt für Drucksachen bestätigen
+- [ ] Telefonnummer für Drucksachen und Signatur ergänzen (`CONTACT.phone` in `js/marketing-data.js`)
 - [ ] Marketing-Bereich unter dem Footer entfernen
 - [ ] Kontakt-, Bewerbungs- und Whitepaper-Formular an ein Backend/CRM anbinden (derzeit mailto und PDF im Browser); danach Datenschutz anpassen
 - [ ] Beispielstellen durch echte Stellen ersetzen
