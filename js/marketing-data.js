@@ -10,9 +10,9 @@ window.MK_DATA = (function(){
 
   /* Ansprechpartner für alle Leads aus der Kampagne */
   const CONTACT = {
-    name: 'Gunter Wendt',
-    role: 'Ansprechpartner für Pharmaunternehmen',        // Funktion noch bestätigen
-    mail: 'gunter.wendt@covendos.com',
+    name: 'Martin Schweppe',
+    role: 'Geschäftsführer',
+    mail: 'martin.schweppe@grafitecture.de',
     phone: '+49 621 000 00-00',                           // Platzhalter: Telefonnummer fehlt
     web: 'healthklick.de',                                // Domain ist frei (Stand 9.11.2026), noch registrieren
     street: 'Rebenstraße 9a', city: '68309 Mannheim'
@@ -40,7 +40,7 @@ window.MK_DATA = (function(){
     { id: 'p01', date: '2026-11-16', ch: ['li'], pillar: 'wissen', format: 'Zahl-Post',
       title: 'Ab 2027: 15,5 % Herstellerabschlag',
       v: { t: 'stat', bg: 'ink', n: '15,5 %', l: 'Herstellerabschlag auf patentgeschützte Arzneimittel ab 1. Januar 2027', s: 'Quelle: GKV-Beitragssatzstabilisierungsgesetz, BMG 10.07.2026' },
-      text: 'Ab 1. Januar 2027 steigt der Herstellerabschlag auf patentgeschützte Arzneimittel auf 15,5 Prozent. Das hat das GKV-Beitragssatzstabilisierungsgesetz im Juli festgelegt. Gleichzeitig fallen die AMNOG-Leitplanken weg.\n\nFür die Vermarktung heißt das: Jeder Kontakt muss mehr leisten. Drei Hebel sehen wir:\n→ Ärztinnen und Ärzte auf dem Weg erreichen, den sie wählen: vor Ort, per Video, per E-Mail\n→ KI-Agenten bereiten vor und fassen nach, Menschen führen das Gespräch\n→ Teams, die mit dem Bedarf wachsen, statt fester Kosten\n\nWie plant Ihr Team das Jahr 2027? Gunter Wendt freut sich auf Ihre Nachricht.',
+      text: 'Ab 1. Januar 2027 steigt der Herstellerabschlag auf patentgeschützte Arzneimittel auf 15,5 Prozent. Das hat das GKV-Beitragssatzstabilisierungsgesetz im Juli festgelegt. Gleichzeitig fallen die AMNOG-Leitplanken weg.\n\nFür die Vermarktung heißt das: Jeder Kontakt muss mehr leisten. Drei Hebel sehen wir:\n→ Ärztinnen und Ärzte auf dem Weg erreichen, den sie wählen: vor Ort, per Video, per E-Mail\n→ KI-Agenten bereiten vor und fassen nach, Menschen führen das Gespräch\n→ Teams, die mit dem Bedarf wachsen, statt fester Kosten\n\nWie plant Ihr Team das Jahr 2027? Martin Schweppe freut sich auf Ihre Nachricht.',
       tags: '#Pharmavertrieb #AMNOG #MarketAccess #Healthklick', stats: [164, 21, 12] },
 
     { id: 'p02', date: '2026-11-18', ch: ['ig', 'fb'], pillar: 'arbeitgeber', format: 'Karussell',
@@ -88,7 +88,7 @@ window.MK_DATA = (function(){
       text: '77 Prozent der Inhalte, die für den Außendienst produziert werden, kommen selten oder nie zum Einsatz. Und nur in 30 Prozent der Arztgespräche in Europa wird überhaupt digitaler Content gezeigt (Veeva Pulse).\n\nDas Problem ist selten die Qualität. Es ist die Frage, welcher Inhalt in welches Gespräch passt. Bei Healthklick schlägt der Content-Agent vor jedem Kontakt die passenden, freigegebenen Module vor. Die Pharmaberaterin entscheidet, was sie zeigt.\n\nWie viel Ihres Contents kommt bei Ärztinnen und Ärzten an?',
       tags: '#ModularContent #Omnichannel #PharmaMarketing', stats: [141, 26, 11] },
 
-    { id: 'p08', date: '2026-11-30', ch: ['li'], pillar: 'wissen', format: 'Text-Post von Gunter Wendt', by: 'gw',
+    { id: 'p08', date: '2026-11-30', ch: ['li'], pillar: 'wissen', format: 'Text-Post von Martin Schweppe', by: 'gw',
       title: 'Drei Fragen, die Brand Manager gerade stellen',
       v: null,
       text: 'Drei Fragen, die mir Brand Manager in diesen Wochen am häufigsten stellen:\n\n1. Wie viel Außendienst brauchen wir 2027 noch?\nSo viel, wie Ihre Ärztinnen und Ärzte persönlich sehen wollen. Den Rest erreichen wir per Video, Telefon und E-Mail, mit denselben Inhalten und derselben Kontakthistorie.\n\n2. Sprechen bei Ihnen KI-Agenten mit Ärzten?\nNein. Agenten bereiten vor, dokumentieren und fassen nach. Das Gespräch führt bei uns immer ein Mensch.\n\n3. Wie schnell steht ein Team?\nDas hängt vom Profil ab. Im ersten Gespräch sage ich es Ihnen konkret, mit Zahlen.\n\nWelche Frage fehlt hier? Schreiben Sie mir.',
@@ -157,7 +157,7 @@ window.MK_DATA = (function(){
     { id: 'p18', date: '2027-01-11', ch: ['li'], pillar: 'lead', format: 'Einladung',
       title: '30 Minuten für Ihren Launch 2027',
       v: { t: 'deck' },
-      text: 'Sie planen einen Launch in diesem Jahr? In 30 Minuten zeigen wir Ihnen an Ihrem Profil, wie Menschen und KI-Agenten Ihre ersten zwölf Monate tragen: Zielgruppen, Kanäle, Team und Kosten pro Kontakt.\n\nTermin direkt bei Gunter Wendt: gunter.wendt@covendos.com',
+      text: 'Sie planen einen Launch in diesem Jahr? In 30 Minuten zeigen wir Ihnen an Ihrem Profil, wie Menschen und KI-Agenten Ihre ersten zwölf Monate tragen: Zielgruppen, Kanäle, Team und Kosten pro Kontakt.\n\nTermin direkt bei Martin Schweppe: martin.schweppe@grafitecture.de',
       tags: '#Launch2027 #Pharmavertrieb #MarketAccess', stats: [74, 5, 9] }
   ];
 

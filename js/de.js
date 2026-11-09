@@ -179,7 +179,7 @@ const SITE = (() => {
       errFirst:'Bitte Vornamen angeben.', errLast:'Bitte Nachnamen angeben.',
       errMail:'Bitte eine gültige E-Mail-Adresse angeben.', errCompany:'Bitte Unternehmen angeben.',
       talkSubj:t => `Gespräch zum Whitepaper „${t}“`,
-      talkBody:(r,t) => `Guten Tag Herr Wendt,\n\nich habe das Healthklick-Whitepaper „${t}“ gelesen und möchte gern über das Thema sprechen.\n\nName: ${r.first} ${r.last}\nUnternehmen: ${r.company}\nFunktion: ${r.fn || '–'}\nE-Mail: ${r.mail}\nNeue Whitepaper per E-Mail: ${r.news ? 'ja' : 'nein'}\n\nMit freundlichen Grüßen\n${r.first} ${r.last}`,
+      talkBody:(r,t) => `Guten Tag Herr Schweppe,\n\nich habe das Healthklick-Whitepaper „${t}“ gelesen und möchte gern über das Thema sprechen.\n\nName: ${r.first} ${r.last}\nUnternehmen: ${r.company}\nFunktion: ${r.fn || '–'}\nE-Mail: ${r.mail}\nNeue Whitepaper per E-Mail: ${r.news ? 'ja' : 'nein'}\n\nMit freundlichen Grüßen\n${r.first} ${r.last}`,
       file:id => `healthklick-whitepaper-${id}.pdf`, what:'Das Whitepaper', alt:'„Hier lesen“'
     }
   };
@@ -188,13 +188,13 @@ const SITE = (() => {
   const mk = {
     kicker:'Marketing-Material zur Freigabe · Stand 9. November 2026',
     title:'Marketing',
-    lead:'Eine Kampagne aus einem Guss: Social Media, Print, Rechnungswesen, Give-aways und Präsentation. Ziel ist jeder qualifizierte Kontakt, und alle Anfragen aus der Kampagne gehen direkt an Gunter Wendt.',
+    lead:'Eine Kampagne aus einem Guss: Social Media, Print, Rechnungswesen, Give-aways und Präsentation. Ziel ist jeder qualifizierte Kontakt, und alle Anfragen aus der Kampagne gehen direkt an Martin Schweppe.',
     langNote:'',
     facts:[['1','Ansprechpartner für alle Leads'],['18','Beiträge in acht Wochen auf drei Kanälen'],['10','Drucksachen und Vorlagen'],['3','Give-aways'],['1','interaktive Präsentation']],
     navLabel:'Marketing-Material',
     nav:{social:'Social Media', print:'Print', invoice:'Rechnungswesen', give:'Give-aways', deck:'Präsentation', ok:'Freigabe'},
-    flowH:'So kommt jeder Lead bei Gunter Wendt an',
-    flow:[['Kanal','LinkedIn, Instagram, Facebook, QR-Codes auf Drucksachen, Präsentation'],['Website','Kontaktformular oder Whitepaper. Jeder Kanal hat einen eigenen Link mit Quelle, zum Beispiel ?quelle=linkedin'],['E-Mail','Vorbereitete Anfrage mit Themen und Quelle an gunter.wendt@covendos.com'],['Gespräch','Antwort innerhalb eines Werktags, vorbereitet vom Briefing-Agenten']],
+    flowH:'So kommt jeder Lead bei Martin Schweppe an',
+    flow:[['Kanal','LinkedIn, Instagram, Facebook, QR-Codes auf Drucksachen, Präsentation'],['Website','Kontaktformular oder Whitepaper. Jeder Kanal hat einen eigenen Link mit Quelle, zum Beispiel ?quelle=linkedin'],['E-Mail','Vorbereitete Anfrage mit Themen und Quelle an martin.schweppe@grafitecture.de'],['Gespräch','Antwort innerhalb eines Werktags, vorbereitet vom Briefing-Agenten']],
     flowNote:'Die Quelle steht in der Anfrage, ganz ohne Tracking-Cookies. Damit Anfragen ohne Umweg über das E-Mail-Programm ankommen, braucht es noch einen Mail-Dienst (siehe Freigabe).',
     ui:{prev:'Zurück', next:'Weiter', pending:'Musterbild folgt', aiTag:'KI-Musterbild', close:'Schließen', zoom:'Vergrößern'},
     social:{
@@ -203,7 +203,7 @@ const SITE = (() => {
       channelsH:'Welche Kanäle wir bespielen',
       labels:{role:'Rolle', who:'Zielgruppe', formats:'Formate', rhythm:'Rhythmus', goal:'Ziel'},
       channels:[
-        {id:'li', short:'in', name:'LinkedIn', badge:'Hauptkanal', main:true, role:'Lead-Kanal und Fachstimme', who:'Brand Manager, Sales Excellence, Market Access, Medical Affairs und Geschäftsführung bei Pharma- und Biotechunternehmen', formats:'Zahlen-Posts, Dokument-Karussells, Whitepaper mit Lead-Formular, Newsletter „Healthklick Briefing“, Beiträge von Gunter Wendt als persönliche Stimme', rhythm:'3 Beiträge pro Woche auf der Unternehmensseite, 1 bis 2 von Gunter Wendt', goal:'Gesprächsanfragen und Whitepaper-Registrierungen', fact:'80 % der B2B-Leads aus sozialen Netzwerken kommen über LinkedIn.', src:7},
+        {id:'li', short:'in', name:'LinkedIn', badge:'Hauptkanal', main:true, role:'Lead-Kanal und Fachstimme', who:'Brand Manager, Sales Excellence, Market Access, Medical Affairs und Geschäftsführung bei Pharma- und Biotechunternehmen', formats:'Zahlen-Posts, Dokument-Karussells, Whitepaper mit Lead-Formular, Newsletter „Healthklick Briefing“, Beiträge von Martin Schweppe als persönliche Stimme', rhythm:'3 Beiträge pro Woche auf der Unternehmensseite, 1 bis 2 von Martin Schweppe', goal:'Gesprächsanfragen und Whitepaper-Registrierungen', fact:'80 % der B2B-Leads aus sozialen Netzwerken kommen über LinkedIn.', src:7},
         {id:'ig', short:'◎', name:'Instagram', badge:'Arbeitgebermarke', role:'Gesicht des Teams', who:'Pharmareferent:innen, PTA, Naturwissenschaftler:innen, Innendienst und Call-Agents', formats:'Reels aus dem Alltag, Karussells zur Field Force, Team-Momente, Stories mit Fragen und Antworten', rhythm:'2 bis 3 Beiträge pro Woche, Stories nach Anlass', goal:'Bewerbungen und Bekanntheit', fact:'Meistgenutzte Plattform in Deutschland: 40 % Wochenreichweite ab 14 Jahren.', src:5},
         {id:'fb', short:'f', name:'Facebook', badge:'Recruiting in der Fläche', role:'Stellen und Team in den Regionen', who:'Erfahrene Außendienstler:innen und regionale Netzwerke', formats:'Stellen mit Region, Team-Momente, Veranstaltungen', rhythm:'2 Beiträge pro Woche, Stellenanzeigen gezielt nach Region', goal:'Bewerbungen für konkrete Gebiete', fact:'31 % Wochenreichweite in Deutschland.', src:5},
         {id:'yt', short:'▶', name:'YouTube', badge:'Empfehlung ab Q1 2027', role:'Erklären und gefunden werden', who:'Alle Zielgruppen, über die Suche', formats:'Erklärvideos von 2 bis 4 Minuten, Webinar-Aufzeichnungen', rhythm:'1 Video pro Monat', goal:'Auffindbarkeit und Material für den Vertrieb', fact:'Erreicht 72 % der Menschen ab 14 Jahren.', src:5},
@@ -217,16 +217,16 @@ const SITE = (() => {
         ['Echte Menschen, echte Fotos.','Die Team-Bilder hier sind KI-Musterbilder für die Freigabe. In den Kanälen erscheinen nur echte Fotos, mit Einwilligung der Abgebildeten. KI-erzeugte Bilder werden gekennzeichnet (Art. 50 KI-Verordnung).'],
         ['Datenschutz.','Die Datenschutzerklärung bekommt einen Abschnitt zu den Social-Media-Seiten: Für die Seitenstatistiken sind Healthklick und die Plattform gemeinsam verantwortlich (EuGH, C-210/16).'],
         ['Vier Augen.','Jeder Beitrag mit Rechts- oder Marktbezug geht vor der Veröffentlichung durch den Compliance-Agenten und eine verantwortliche Person.'],
-        ['Jeder Link mit Quelle.','Links aus den Kanälen tragen ?quelle=linkedin, ?quelle=instagram oder ?quelle=facebook. Die Quelle steht dann in der Anfrage an Gunter Wendt.']
+        ['Jeder Link mit Quelle.','Links aus den Kanälen tragen ?quelle=linkedin, ?quelle=instagram oder ?quelle=facebook. Die Quelle steht dann in der Anfrage an Martin Schweppe.']
       ],
       tabletH:'So sehen die Kanäle aus',
       tabletNote:'Beispielansicht auf dem Tablet, Stand nach acht Wochen. Follower und Reaktionen sind Beispielwerte. Bei Instagram Beiträge antippen, Karussells mit den Pfeilen blättern.',
       planH:'Redaktionsplan', planLead:'18 Beiträge von KW 47/2026 bis KW 2/2027. Zeile aufklappen für Text und Bild.',
-      mixH:'Mischung der Beiträge', kw:'KW', draftGW:'Entwurf für Gunter Wendt, zur Freigabe durch ihn', textOnly:'Textbeitrag ohne Bild', showInTablet:'Im Tablet zeigen'
+      mixH:'Mischung der Beiträge', kw:'KW', draftGW:'Entwurf für Martin Schweppe, zur Freigabe durch ihn', textOnly:'Textbeitrag ohne Bild', showInTablet:'Im Tablet zeigen'
     },
     print:{
       num:'02', h:'Print',
-      lead:'Klassisch gedruckt, digital gedacht. Alles auf einem Raster, in den fünf Markenfarben, mit Gunter Wendt als Absender. Antippen zum Vergrößern.',
+      lead:'Klassisch gedruckt, digital gedacht. Alles auf einem Raster, in den fünf Markenfarben, mit Martin Schweppe als Absender. Antippen zum Vergrößern.',
       items:{
         letter:['Briefbogen','DIN A4 nach DIN 5008, Form B · 100 g/m² Recyclingpapier, FSC · als Word-Vorlage und im Digitaldruck'],
         card:['Visitenkarte, Vorderseite','85 × 55 mm · 400 g/m² Naturkarton · Logo-Rot als Sonderfarbe'],
@@ -320,10 +320,8 @@ const SITE = (() => {
       lead:'Was vor dem Druck noch offen ist, und wie Ihre Rückmeldung zu uns kommt.',
       openH:'Offene Punkte',
       open:[
-        'Funktion von Gunter Wendt bestätigen, sie steht auf allen Drucksachen und in der Signatur.',
         'Telefonnummer ergänzen: Visitenkarte, Briefbogen, Signatur und Impressum.',
         'Domain healthklick.de registrieren und mit Vercel verbinden. Die QR-Codes zeigen darauf. Am 9. November 2026 war sie frei, healthklick.com ist vergeben.',
-        'Empfänger der Anfragen rechtlich klären: Das Postfach liegt bei Covendos. Vertrag nach Art. 28 oder Art. 26 DSGVO schließen und die Datenschutzerklärung ergänzen.',
         'Marke und Zeichen prüfen lassen: Markenrecherche „HEALTHKLICK“ und Abstand zum geschützten Roten Kreuz.',
         'Echte Team-Fotos für Social Media aufnehmen. Die Bilder hier sind KI-Musterbilder.',
         'Automatischen Versand der Anfragen einrichten (Mail-Dienst) und danach die Datenschutzerklärung anpassen.'
@@ -355,7 +353,7 @@ const SITE = (() => {
 
   return {
     lang:'de', locale:'de-DE', base:'',
-    mail:'gunter.wendt@covendos.com', apply:'martin.schweppe@grafitecture.de',
+    mail:'martin.schweppe@grafitecture.de', apply:'martin.schweppe@grafitecture.de',
     alias:{marke:'brand'},
     CHANNELS, JOBS, AGENTS, TOPICS, PAPERS, SCALE, COLORS, t, mk
   };

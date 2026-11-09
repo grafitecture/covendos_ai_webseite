@@ -79,7 +79,7 @@
   /* ---------- Plattform-Oberflächen im Tablet ---------- */
   const chName = { li: 'LinkedIn', ig: 'Instagram', fb: 'Facebook' };
   const avatarHK = cls => `<span class="av hk ${cls||''}" aria-hidden="true"></span>`;
-  const avatarGW = cls => `<span class="av gw ${cls||''}" aria-hidden="true">GW</span>`;
+  const avatarGW = cls => `<span class="av gw ${cls||''}" aria-hidden="true">${C.name.split(' ').map(w => w[0]).join('')}</span>`;
   const clip = (t, n) => t.length > n ? t.slice(0, t.lastIndexOf(' ', n)).replace(/[\s,.:;→–-]+$/, '') : t;
   const byDateDesc = (a, b) => b.date.localeCompare(a.date);
   const postsFor = ch => D.POSTS.filter(p => p.ch.includes(ch)).sort(byDateDesc);
@@ -87,7 +87,7 @@
   function liPost(p){
     const gw = p.by === 'gw';
     const head = gw
-      ? `<p class="li-repost">${avatarHK('xs')}<b>Healthklick</b> hat dies reposted</p><header class="li-h">${avatarGW()}<div><b>${h(C.name)}</b><span>${h(C.role)} bei Healthklick</span><span>${h(dNum(p.date))} · ${ic('globe','tiny')}</span></div><span class="li-follow">+ Folgen</span></header>`
+      ? `<p class="li-repost">${avatarHK('xs')}<b>Healthklick</b> hat dies reposted</p><header class="li-h">${avatarGW()}<div><b>${h(C.name)}</b><span>${h(C.role)}, Grafitecture GmbH · Healthklick</span><span>${h(dNum(p.date))} · ${ic('globe','tiny')}</span></div><span class="li-follow">+ Folgen</span></header>`
       : `<header class="li-h">${avatarHK()}<div><b>Healthklick</b><span>${h(D.PROFILES.li.followers)} Follower:innen</span><span>${h(dNum(p.date))} · ${ic('globe','tiny')}</span></div><span class="li-more">${ic('more')}</span></header>`;
     const txt = p.text + '\n\n' + p.tags;
     const short = clip(p.text, 230);
@@ -222,7 +222,7 @@
   function letterA4(){
     const body = `<p class="ab fs10 b" ${at(25, 103, 165)}>Ihre Anfrage zur Launch-Begleitung in der Kardiologie</p>
       <div class="ab fs10 txt" ${at(25, 115, 160)}><p>Sehr geehrte Frau Dr. Sommer,</p><p>vielen Dank für das Gespräch am 4. November. Wie besprochen, erhalten Sie anbei unseren Vorschlag für die ersten zwölf Monate nach dem Markteintritt: ein hybrides Team aus Außendienst und eReps, vorbereitet und begleitet von KI-Agenten, mit Medical Information vom ersten Tag an.</p><p>Jeder Agent hat bei uns eine verantwortliche Person. So sehen Sie jederzeit, wer was tut, und jede Entscheidung trifft ein Mensch.</p><p>Gern stellen wir Ihnen das Konzept am 24. November bei Ihnen in Darmstadt vor. Bis dahin erreichen Sie mich jederzeit per E-Mail.</p><p>Mit freundlichen Grüßen</p><p class="sig" aria-hidden="true"></p><p>${h(C.name)}<br>${h(C.role)}</p><p class="slate">Anlage: Präsentation „Die ersten zwölf Monate“</p></div>`;
-    const info = [['Ihr Zeichen','KS-0411'],['Ihre Nachricht vom','04.11.2026'],['Unser Zeichen','GW/HK-118'],['Name',C.name],['Telefon',C.phone],['E-Mail',C.mail],['Datum','09.11.2026']];
+    const info = [['Ihr Zeichen','KS-0411'],['Ihre Nachricht vom','04.11.2026'],['Unser Zeichen','MS/HK-118'],['Name',C.name],['Telefon',C.phone],['E-Mail',C.mail],['Datum','09.11.2026']];
     return paper(210, 297, 'a4', letterhead(body, info, RECIPIENT), 'Briefbogen DIN A4');
   }
   function invoiceA4(){
